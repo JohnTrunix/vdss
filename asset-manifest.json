@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/vdss/static/css/main.e5ed4100.css",
+    "main.js": "/vdss/static/js/main.bb34a48a.js",
+    "index.html": "/vdss/index.html",
+    "main.e5ed4100.css.map": "/vdss/static/css/main.e5ed4100.css.map",
+    "main.bb34a48a.js.map": "/vdss/static/js/main.bb34a48a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e5ed4100.css",
+    "static/js/main.bb34a48a.js"
+  ]
+}
