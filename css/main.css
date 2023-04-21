@@ -1,22 +1,81 @@
-body {
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1.5;
-    color: #333;
+:root {
+    --content-padding: 100px;
 }
 
 body {
-    font-size: 1.4rem;
-    text-rendering: optimizeLegibility;
+    font-family: "Roboto", sans-serif;
 }
 
-/* sets hyphenation by default on paragraphs */
+h1 {
+    font-size: 3rem;
+}
+
 p {
-    -ms-word-break: break-all;
-    word-break: break-all;
-    word-break: break-word;
-    -moz-hyphens: auto;
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
+    text-align: justify;
+    text-justify: inter-word;
     hyphens: auto;
+}
+.container {
+    height: calc(100vh - 2 * var(--content-padding));
+    width: calc(100vw - 2 * var(--content-padding));
+    padding: var(--content-padding);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+.top-left {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    background-color: blue;
+}
+
+.top-mid {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: green;
+}
+
+.top-right {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+    background-color: pink;
+}
+
+.mid-left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    background-color: yellow;
+}
+
+.mid-mid {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-color: orange;
+}
+
+.mid-right {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    background-color: purple;
+}
+
+.bottom-left {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    background-color: red;
+}
+
+.bottom-mid {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    background-color: brown;
+}
+
+.bottom-right {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    background-color: black;
 }

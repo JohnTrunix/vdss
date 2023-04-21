@@ -18,20 +18,24 @@
     </head>
     <body>
         <div id="fullpage">
+            <div class="section"><h1>Intro</h1></div>
             <div class="section">
-                <h1>Real Estates in Switzerland</h1>
-                <h3>
-                    You can't afford an own Real Estate in the next 30 years!
-                </h3>
+                <div class="container">
+                    <div class="top-left"></div>
+                    <div class="top-mid"></div>
+                    <div class="top-right"></div>
+                    <div class="mid-left"></div>
+                    <div class="mid-mid"></div>
+                    <div class="mid-right"></div>
+                    <div class="bottom-left"></div>
+                    <div class="bottom-mid"></div>
+                    <div class="bottom-right"></div>
+                </div>
             </div>
-            <div class="section">Abschnitt 2</div>
-            <div class="section">
-                <div class="slide" data-anchor="slide1">Slide 1</div>
-                <div class="slide" data-anchor="slide2">Slide 2</div>
-                <div class="slide" data-anchor="slide3">Slide 3</div>
-                <div class="slide" data-anchor="slide4">Slide 4</div>
-            </div>
-            <div class="section">Abschnitt 4</div>
+            <div class="section"></div>
+            <div class="section"></div>
+            <div class="section"></div>
+            <div class="section"><h1>END</h1></div>
         </div>
 
         <script src="js/script.js"></script>
@@ -39,15 +43,36 @@
         <script>
             new fullpage("#fullpage", {
                 licenseKey: "gplv3-license",
-                autoScrolling: true,
-                scrollHorizontally: true,
 
                 // Accessibility
+                autoScrolling: true,
                 keyboardScrolling: true,
                 animateAnchor: true,
                 recordHistory: true,
+                scrollBar: false,
+
+                navigation: true,
+                navigationPosition: "right",
+                anchors: [
+                    "intro",
+                    "section-2",
+                    "section-3",
+                    "section-4",
+                    "section-5",
+                    "end",
+                ],
+                navigationTooltips: [
+                    "Intro",
+                    "Section 2",
+                    "Section 3",
+                    "Section 4",
+                    "Section 5",
+                    "End",
+                ],
 
                 // Design
+                verticalCentered: true,
+                fitToSection: true,
                 sectionsColor: [
                     "#f2f2f2",
                     "#4BBFC3",
@@ -55,15 +80,12 @@
                     "whitesmoke",
                     "#000",
                 ],
-                controlArrows: true,
-                controlArrowsHTML: [
-                    '<div class="fp-arrow"></div>',
-                    '<div class="fp-arrow"></div>',
-                ],
 
                 // Custom selectors
                 sectionSelector: ".section",
                 slideSelector: ".slide",
+
+                // Credits
                 credits: {
                     enabled: true,
                     label: "Made with fullPage.js",
