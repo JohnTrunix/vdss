@@ -27,7 +27,7 @@ format:
         title: "Data Report"
         subtitle: "Data Cleaning, Analysis and Preperation"
         author: "DS-22t"
-        theme: united
+        documentclass: report
         papersize: A4
 
         toc: false
@@ -35,3 +35,8 @@ format:
 
         number-sections: true
         number-depth: 5
+
+        execute:
+            eval: false
+            echo: false
+            output: false
