@@ -1,0 +1,22 @@
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    line-height: 1.5;
+    color: #333;
+}
+
+body {
+    font-size: 1.4rem;
+    text-rendering: optimizeLegibility;
+}
+
+/* sets hyphenation by default on paragraphs */
+p {
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}

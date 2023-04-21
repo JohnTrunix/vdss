@@ -1,0 +1,12 @@
+{
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.4.0",
+        "fullpage.js": "^4.0.19"
+    },
+    "devDependencies": {
+        "live-server": "^1.2.2"
+    },
+    "scripts": {
+        "start": "live-server"
+    }
+}

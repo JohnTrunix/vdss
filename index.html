@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta
+            name="description"
+            content="Storytelling/Scrollytelling Webpage about Real Estate in Switzerland"
+        />
+        <title>Non affordable Real Estate</title>
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="stylesheet" href="css/main.css" />
+        <link
+            rel="stylesheet"
+            href="node_modules/fullpage.js/dist/fullpage.min.css"
+        />
+    </head>
+    <body>
+        <div id="fullpage">
+            <div class="section">
+                <h1>Real Estates in Switzerland</h1>
+                <h3>
+                    You can't afford an own Real Estate in the next 30 years!
+                </h3>
+            </div>
+            <div class="section">Abschnitt 2</div>
+            <div class="section">
+                <div class="slide" data-anchor="slide1">Slide 1</div>
+                <div class="slide" data-anchor="slide2">Slide 2</div>
+                <div class="slide" data-anchor="slide3">Slide 3</div>
+                <div class="slide" data-anchor="slide4">Slide 4</div>
+            </div>
+            <div class="section">Abschnitt 4</div>
+        </div>
+
+        <script src="js/script.js"></script>
+        <script src="node_modules/fullpage.js/dist/fullpage.min.js"></script>
+        <script>
+            new fullpage("#fullpage", {
+                licenseKey: "gplv3-license",
+                autoScrolling: true,
+                scrollHorizontally: true,
+
+                // Accessibility
+                keyboardScrolling: true,
+                animateAnchor: true,
+                recordHistory: true,
+
+                // Design
+                sectionsColor: [
+                    "#f2f2f2",
+                    "#4BBFC3",
+                    "#7BAABE",
+                    "whitesmoke",
+                    "#000",
+                ],
+                controlArrows: true,
+                controlArrowsHTML: [
+                    '<div class="fp-arrow"></div>',
+                    '<div class="fp-arrow"></div>',
+                ],
+
+                // Custom selectors
+                sectionSelector: ".section",
+                slideSelector: ".slide",
+                credits: {
+                    enabled: true,
+                    label: "Made with fullPage.js",
+                    position: "right",
+                },
+            });
+        </script>
+    </body>
+</html>
