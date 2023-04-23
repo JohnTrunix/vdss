@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Metadata -->
+        <meta lang="en" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -8,90 +10,64 @@
             name="description"
             content="Storytelling/Scrollytelling Webpage about Real Estate in Switzerland"
         />
+
+        <!-- Favicon & Title -->
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
         <title>Non affordable Real Estate</title>
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <link rel="stylesheet" href="css/main.css" />
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./css/main.css" />
         <link
             rel="stylesheet"
-            href="node_modules/fullpage.js/dist/fullpage.min.css"
+            href="./node_modules/fullpage.js/dist/fullpage.min.css"
         />
+        <!-- JS -->
+        <script
+            type="module"
+            src="./node_modules/chart.js/dist/chart.umd.js"
+        ></script>
     </head>
     <body>
         <div id="fullpage">
+            <!-- Page Start -->
             <div class="section"><h1>Intro</h1></div>
+            <!-- Page 2 -->
             <div class="section">
                 <div class="container">
-                    <div class="top-left"></div>
-                    <div class="top-mid"></div>
-                    <div class="top-right"></div>
-                    <div class="mid-left"></div>
-                    <div class="mid-mid"></div>
-                    <div class="mid-right"></div>
-                    <div class="bottom-left"></div>
-                    <div class="bottom-mid"></div>
-                    <div class="bottom-right"></div>
+                    <div id="s2-title" class="title">
+                        <h2>Section Message 1</h2>
+                        <h3>Subheading Message 1</h3>
+                    </div>
+                    <div id="s2-content" class="content">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                        </p>
+                        <button
+                            class="btn"
+                            onclick="fullpage_api.moveSectionDown()"
+                        >
+                            Button
+                        </button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="line-chart"></canvas>
                 </div>
             </div>
-            <div class="section"></div>
-            <div class="section"></div>
-            <div class="section"></div>
+            <!-- Page END -->
             <div class="section"><h1>END</h1></div>
         </div>
-
-        <script src="js/script.js"></script>
-        <script src="node_modules/fullpage.js/dist/fullpage.min.js"></script>
-        <script>
-            new fullpage("#fullpage", {
-                licenseKey: "gplv3-license",
-
-                // Accessibility
-                autoScrolling: true,
-                keyboardScrolling: true,
-                animateAnchor: true,
-                recordHistory: true,
-                scrollBar: false,
-
-                navigation: true,
-                navigationPosition: "right",
-                anchors: [
-                    "intro",
-                    "section-2",
-                    "section-3",
-                    "section-4",
-                    "section-5",
-                    "end",
-                ],
-                navigationTooltips: [
-                    "Intro",
-                    "Section 2",
-                    "Section 3",
-                    "Section 4",
-                    "Section 5",
-                    "End",
-                ],
-
-                // Design
-                verticalCentered: true,
-                fitToSection: true,
-                sectionsColor: [
-                    "#f2f2f2",
-                    "#4BBFC3",
-                    "#7BAABE",
-                    "whitesmoke",
-                    "#000",
-                ],
-
-                // Custom selectors
-                sectionSelector: ".section",
-                slideSelector: ".slide",
-
-                // Credits
-                credits: {
-                    enabled: true,
-                    label: "Made with fullPage.js",
-                    position: "right",
-                },
-            });
-        </script>
+        <!-- Custom JS -->
+        <script type="module" src="./js/line-chart.js"></script>
+        <!-- Fullpage.js & Config -->
+        <script
+            type="text/javascript"
+            src="./node_modules/fullpage.js/dist/fullpage.min.js"
+        ></script>
+        <script type="text/javascript" src="./index.js"></script>
     </body>
 </html>

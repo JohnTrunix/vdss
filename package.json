@@ -1,12 +1,16 @@
 {
-    "dependencies": {
-        "@fortawesome/fontawesome-free": "^6.4.0",
-        "fullpage.js": "^4.0.19"
+    "name": "vdss",
+    "version": "1.0.0",
+    "license": "GPL-3.0",
+    "scripts": {
+        "dev": "parcel index.html",
+        "build": "parcel build index.html"
     },
     "devDependencies": {
-        "live-server": "^1.2.2"
+        "parcel": "^2.8.3"
     },
-    "scripts": {
-        "start": "live-server"
+    "dependencies": {
+        "chart.js": "^4.2.1",
+        "fullpage.js": "^4.0.19"
     }
 }

@@ -1,5 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 :root {
-    --content-padding: 100px;
+    --content-padding: 50px;
+    --primary-color: #253237;
+    --secondary-color: #5e4659;
+    --accent-color: #ef8354;
 }
 
 body {
@@ -15,67 +23,78 @@ p {
     text-justify: inter-word;
     hyphens: auto;
 }
+
+canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
 .container {
+    z-index: 50;
     height: calc(100vh - 2 * var(--content-padding));
     width: calc(100vw - 2 * var(--content-padding));
     padding: var(--content-padding);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(10, 1fr);
     justify-self: stretch;
     align-self: stretch;
 }
 
-.top-left {
-    grid-column: 1 / 2;
+.chart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+}
+
+.title {
+    z-index: inherit;
+    grid-column: 1 / 6;
     grid-row: 1 / 2;
-    background-color: blue;
 }
 
-.top-mid {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    background-color: green;
+.content {
+    z-index: inherit;
+    grid-column: 1 / 3;
+    grid-row: 2 / 2;
 }
 
-.top-right {
-    grid-column: 3 / 4;
-    grid-row: 1 / 2;
-    background-color: pink;
+.in-out-content {
+    opacity: 0;
+    transform: translateY(-100%);
 }
 
-.mid-left {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    background-color: yellow;
+.move-in {
+    animation: slideIn 1s ease-in-out forwards;
 }
 
-.mid-mid {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    background-color: orange;
+.move-out {
+    animation: slideOut 1s ease-in-out forwards;
 }
 
-.mid-right {
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    background-color: purple;
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.bottom-left {
-    grid-column: 1 / 2;
-    grid-row: 3 / 4;
-    background-color: red;
-}
+@keyframes slideOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 
-.bottom-mid {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-    background-color: brown;
-}
-
-.bottom-right {
-    grid-column: 3 / 4;
-    grid-row: 3 / 4;
-    background-color: black;
+    100% {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
 }
