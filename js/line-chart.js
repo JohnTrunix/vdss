@@ -26,15 +26,19 @@ import { Chart } from "chart.js/auto";
                     label: "Count",
                     data: data.map((row) => row.count),
                     fill: true,
+                    pointStyle: false,
                 },
                 {
                     label: "Average",
                     data: data.map((row) => row.avg),
                     fill: false,
+                    pointStyle: false,
                 },
             ],
         },
         options: {
+            responsive: true,
+            maintainAspectRatio: false,
             elements: {
                 line: {
                     borderWidth: 5,
@@ -55,6 +59,9 @@ import { Chart } from "chart.js/auto";
                     intersect: false,
                     axis: "x",
                 },
+            },
+            animation: {
+                duration: 4000,
             },
         },
     });
