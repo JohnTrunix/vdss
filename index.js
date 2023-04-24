@@ -1,5 +1,5 @@
 // ---------- VARIABLES ----------
-var scrollCountTrigger = 4; //number of times the user has to scroll to go to the next section
+var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
 var scrollCount = 0; //number of times the user has to scroll to go to the next section
 
 // ---------- FULLPAGE.JS Init ----------
@@ -11,7 +11,7 @@ new fullpage("#fullpage", {
     autoScrolling: true,
     keyboardScrolling: true,
     animateAnchor: false,
-    lockAnchors: true,
+    lockAnchors: false,
     recordHistory: true,
     scrollBar: false,
 
@@ -45,10 +45,11 @@ new fullpage("#fullpage", {
     beforeLeave: function (origin, destination, direction, trigger) {
         scrollCount++;
         console.log("Trigger Type: " + trigger);
-        // fix scrollCount only for mousewheel & keydown (without fullpage_api.moveSectionDown())
-        if (scrollCount >= scrollCountTrigger) {
+        if (scrollCount >= scrollCountTrigger && trigger == "wheel") {
             scrollCount = 0;
             handleAction(direction, origin, destination);
+            return true;
+        } else if (trigger != "wheel") {
             return true;
         }
         return false;
