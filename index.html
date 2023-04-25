@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Metadata -->
+        <!------------------------------------------ Metadata ------------------------------------------>
         <meta lang="en" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,25 +11,27 @@
             content="Storytelling/Scrollytelling Webpage about Real Estate in Switzerland"
         />
 
-        <!-- Favicon & Title -->
+        <!-------------------------------------- Favicon & Title --------------------------------------->
         <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
         <title>Non affordable Real Estate</title>
 
-        <!-- CSS -->
+        <!-------------------------------------------- CSS --------------------------------------------->
         <link rel="stylesheet" href="./css/main.css" />
         <link
             rel="stylesheet"
             href="./node_modules/fullpage.js/dist/fullpage.min.css"
         />
-        <!-- JS -->
+
+        <!--------------------------------------------- JS --------------------------------------------->
         <script
             type="module"
             src="./node_modules/chart.js/dist/chart.umd.js"
         ></script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
     </head>
     <body>
         <div id="fullpage">
-            <!-- Page Start -->
+            <!----------------------------------------- Page 1 ----------------------------------------->
             <div class="section">
                 <h1>Intro</h1>
                 <div class="note info">
@@ -42,7 +44,8 @@
                     </p>
                 </div>
             </div>
-            <!-- Page 2 -->
+
+            <!----------------------------------------- Page 2 ----------------------------------------->
             <div class="section">
                 <div class="container">
                     <div id="s2-title" class="title">
@@ -63,12 +66,33 @@
                     <canvas id="line-chart"></canvas>
                 </div>
             </div>
-            <!-- Page END -->
-            <div class="section"><h1>END</h1></div>
+
+            <!----------------------------------------- Page 3 ----------------------------------------->
+            <div class="section">
+                <div class="container">
+                    <div id="s2-title" class="title">
+                        <h2>Section Message 1</h2>
+                        <h3>Subheading Message 1</h3>
+                    </div>
+                    <div id="s2-content" class="content">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                        </p>
+                    </div>
+                </div>
+                <svg class="chart-container" id="line-chart2"></svg>
+            </div>
         </div>
-        <!-- Custom JS -->
+
+        <!----------------------------------------- Custom JS ------------------------------------------>
         <script type="module" src="./js/line-chart.js"></script>
-        <!-- Fullpage.js & Config -->
+        <script type="module" src="./js/line-chart2.js"></script>
+
+        <!----------------------------------------- Fullpage JS ---------------------------------------->
         <script
             type="text/javascript"
             src="./node_modules/fullpage.js/dist/fullpage.min.js"

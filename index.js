@@ -1,8 +1,11 @@
-// ---------- VARIABLES ----------
+// -------------------------------- IMPORTS --------------------------------
+//import "./js/line-chart.js";
+
+// ------------------------------- VARIABLES -------------------------------
 var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
 var scrollCount = 0; //number of times the user has to scroll to go to the next section
 
-// ---------- FULLPAGE.JS Init ----------
+// --------------------------- FULLPAGE.JS Init ----------------------------
 new fullpage("#fullpage", {
     licenseKey: "gplv3-license",
 
@@ -56,7 +59,7 @@ new fullpage("#fullpage", {
     },
 });
 
-// ---------- FUNCTIONS ----------
+// ------------------------------- FUNCTIONS -------------------------------
 
 function handleAction(direction, origin, destination) {
     if (origin.anchors == "intro") {
