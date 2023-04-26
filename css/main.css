@@ -117,3 +117,8 @@ div.note {
     font-size: large;
     margin-right: calc(100% - 30px);
 }
+
+.tick {
+    stroke: grey;
+    stroke-width: 1px;
+}

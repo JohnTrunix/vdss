@@ -12,38 +12,49 @@ const data = [
     { year: 2020, count: 45, avg: 60 },
     { year: 2021, count: 28, avg: 73 },
     { year: 2022, count: 48, avg: 43 },
-  ];
-  
-  const margin = { top: 10, right: 30, bottom: 30, left: 60 };
-  const width = 600 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
-  
-  const svg = d3.select("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
-  
-  const x = d3.scaleBand()
-    .domain(data.map(d => d.year))
-    .range([margin.left, width - margin.right])
-    .padding(0.1);
-  
-  const y1 = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.count)])
-    .range([height - margin.bottom, margin.top]);
-  
-  const y2 = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.avg)])
-    .range([height - margin.bottom, margin.top]);
-  
-  const xAxis = g => g
-    .attr("transform", `translate(0,${height - margin.bottom})`)
-    .call(d3.axisBottom(x).tickSizeOuter(0));
-  
-  const yAxisLeft = g => g
-    .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y1))
-    .call(g => g.select(".domain").remove())
-    .call(g => g.append("text")
-      .attr("x", -margin.left)
-      .attr("y", 10)
-  
+];
+
+var options = {
+    chart: {
+        height: "100%",
+        width: "100%",
+    },
+    series: [
+        {
+            name: "Count",
+            type: "line",
+            data: data.map((d) => d.count),
+        },
+        {
+            name: "Average",
+            type: "area",
+            data: data.map((d) => d.avg),
+        },
+    ],
+
+    xaxis: {
+        categories: data.map((d) => d.year),
+        tooltip: {
+            enabled: true,
+        },
+    },
+    yaxis: {
+        min: 0,
+        max: 80,
+        tickAmount: 8,
+    },
+    stroke: {
+        curve: "smooth",
+    },
+    grid: {
+        show: true,
+        xaxis: {
+            lines: {
+                show: true,
+            },
+        },
+    },
+};
+
+var chart = new ApexCharts(document.querySelector("#line-chart2"), options);
+chart.render();

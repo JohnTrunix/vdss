@@ -72,22 +72,8 @@ const previousY = (ctx) =>
                 },
             },
             animation: {
-                duration: 0,
+                duration: 800,
                 easing: "easeOutQuart",
-                x: {
-                    type: "number",
-                    easing: "easeOutQuart",
-                    duration: 5000,
-                    from: 0,
-                    delay: 1000,
-                },
-                y: {
-                    type: "number",
-                    easing: "easeOutQuart",
-                    duration: 5000,
-                    from: previousY,
-                    delay: 1000,
-                },
             },
         },
     });

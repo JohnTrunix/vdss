@@ -10,7 +10,7 @@ new fullpage("#fullpage", {
     licenseKey: "gplv3-license",
 
     // Accessibility
-    scrollingSpeed: 0,
+    scrollingSpeed: 700,
     autoScrolling: true,
     keyboardScrolling: true,
     animateAnchor: false,
@@ -20,7 +20,7 @@ new fullpage("#fullpage", {
 
     navigation: true,
     navigationPosition: "right",
-    anchors: ["intro", "section-2", "end"],
+    anchors: ["intro", "section-2", "section-3", "end"],
     navigationTooltips: ["Intro", "Section 2", "End"],
 
     // Design
@@ -43,19 +43,6 @@ new fullpage("#fullpage", {
         enabled: true,
         label: "Made with fullPage.js",
         position: "right",
-    },
-
-    beforeLeave: function (origin, destination, direction, trigger) {
-        scrollCount++;
-        console.log("Trigger Type: " + trigger);
-        if (scrollCount >= scrollCountTrigger && trigger == "wheel") {
-            scrollCount = 0;
-            handleAction(direction, origin, destination);
-            return true;
-        } else if (trigger != "wheel") {
-            return true;
-        }
-        return false;
     },
 });
 
