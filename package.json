@@ -10,7 +10,7 @@
         "parcel": "^2.8.3"
     },
     "dependencies": {
-        "chart.js": "^4.2.1",
+        "apexcharts": "^3.39.0",
         "fullpage.js": "^4.0.19"
     }
 }

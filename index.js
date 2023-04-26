@@ -1,6 +1,3 @@
-// -------------------------------- IMPORTS --------------------------------
-//import "./js/line-chart.js";
-
 // ------------------------------- VARIABLES -------------------------------
 var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
 var scrollCount = 0; //number of times the user has to scroll to go to the next section
@@ -20,8 +17,22 @@ new fullpage("#fullpage", {
 
     navigation: true,
     navigationPosition: "right",
-    anchors: ["intro", "section-2", "section-3", "end"],
-    navigationTooltips: ["Intro", "Section 2", "End"],
+    anchors: [
+        "intro",
+        "section-1",
+        "section-2",
+        "section-3",
+        "section-4",
+        "end",
+    ],
+    navigationTooltips: [
+        "Intro",
+        "Section 1",
+        "Section 2",
+        "Section 3",
+        "Section 4",
+        "End",
+    ],
 
     // Design
     verticalCentered: true,
@@ -44,14 +55,10 @@ new fullpage("#fullpage", {
         label: "Made with fullPage.js",
         position: "right",
     },
+
+    beforeLeave: function (origin, destination, direction) {
+        return true;
+    },
 });
 
 // ------------------------------- FUNCTIONS -------------------------------
-
-function handleAction(direction, origin, destination) {
-    if (origin.anchors == "intro") {
-        // get s2 elements
-        s2Title = document.getElementById("s2-title");
-        s2Content = document.getElementById("s2-content");
-    }
-}
