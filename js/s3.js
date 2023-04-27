@@ -16,17 +16,7 @@ var options = {
         width: "100%",
         height: "100%",
         toolbar: {
-            show: false,
-            tools: {
-                download: false,
-                selection: false,
-                zoom: false,
-                zoomin: false,
-                zoomout: false,
-                pan: false,
-                reset: false,
-                customIcons: [],
-            },
+            show: true,
         },
     },
     stroke: {
@@ -50,6 +40,10 @@ var options = {
         "11 Jan 2001",
         "12 Jan 2001",
     ],
+    legend: {
+        position: "top",
+        horizontalAlign: "center",
+    },
     grid: {
         show: true,
         xaxis: {
@@ -65,8 +59,5 @@ var options = {
     },
 };
 
-var chart = new ApexCharts(
-    document.querySelector("#s3-mortage-rates"),
-    options
-);
+var chart = new ApexCharts(document.querySelector("#s3-chart"), options);
 chart.render();

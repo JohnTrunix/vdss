@@ -17,20 +17,15 @@ new fullpage("#fullpage", {
 
     navigation: true,
     navigationPosition: "right",
-    anchors: [
-        "intro",
-        "section-1",
-        "section-2",
-        "section-3",
-        "section-4",
-        "end",
-    ],
+    anchors: ["intro", "s1", "s2", "s3", "s4", "s5", "recap", "end"],
     navigationTooltips: [
         "Intro",
         "Section 1",
         "Section 2",
         "Section 3",
         "Section 4",
+        "Section 5",
+        "Recap",
         "End",
     ],
 

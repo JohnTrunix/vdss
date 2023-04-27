@@ -77,8 +77,5 @@ var options = {
     },
 };
 
-var chart = new ApexCharts(
-    document.querySelector("#s4-forecast-price"),
-    options
-);
+var chart = new ApexCharts(document.querySelector("#s4-chart"), options);
 chart.render();

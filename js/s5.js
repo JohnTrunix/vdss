@@ -1,4 +1,4 @@
-const dataS2 = [
+const dataS5 = [
     { year: 2015, new: 23000, old: 20000, apartments: 10000 },
     { year: 2016, new: 2000, old: 25000, apartments: 15000 },
     { year: 2017, new: 40000, old: 1000, apartments: 20000 },
@@ -10,47 +10,42 @@ const dataS2 = [
     { year: 2023, new: 65000, old: 60000, apartments: 80000 },
 ];
 
-var s2TrendOptions = {
+var s5TrendOptions = {
     chart: {
-        type: "bar",
+        type: "line",
+        stacked: false,
         height: "100%",
         width: "100%",
         toolbar: {
             show: true,
         },
     },
-    plotOptions: {
-        bar: {
-            horizontal: false,
-        },
-    },
-    dataLabels: {
-        enabled: false,
-    },
     series: [
         {
             name: "New Build",
-            data: dataS2.map((x) => x.new),
+            data: dataS5.map((x) => x.new),
         },
         {
             name: "Old Build",
-            data: dataS2.map((x) => x.old),
+            data: dataS5.map((x) => x.old),
         },
         {
             name: "Apartments",
-            data: dataS2.map((x) => x.apartments),
+            data: dataS5.map((x) => x.apartments),
         },
     ],
+    stroke: {
+        width: [4, 4, 4],
+        curve: "smooth",
+    },
+    labels: dataS5.map((x) => x.year),
     yaxis: {
         min: 0,
         max: 100000,
     },
-    xaxis: {
-        categories: dataS2.map((x) => x.year),
-    },
-    legend: {
-        position: "top",
-        horizontalAlign: "center",
+    tooltip: {
+        shared: true,
+        intersect: false,
     },
     grid: {
         show: true,
@@ -68,8 +63,8 @@ var s2TrendOptions = {
 };
 
 // export chart instance
-var chartS2 = new ApexCharts(
-    document.querySelector("#s2-chart"),
-    s2TrendOptions
+var chartS5 = new ApexCharts(
+    document.querySelector("#s5-chart"),
+    s5TrendOptions
 );
-chartS2.render();
+chartS5.render();
