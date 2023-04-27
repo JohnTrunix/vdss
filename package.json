@@ -4,7 +4,7 @@
     "license": "GPL-3.0",
     "scripts": {
         "dev": "parcel index.html",
-        "build": "parcel build index.html"
+        "build": "parcel build index.html --public-url ./ --dist-dir ./build --no-cache"
     },
     "devDependencies": {
         "parcel": "^2.8.3"
