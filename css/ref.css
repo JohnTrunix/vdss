@@ -13,7 +13,12 @@
 
 .ref-data {
     grid-column: 1 / 7;
-    grid-row: 3 / 13;
+    grid-row: 3 / 9;
+}
+
+.ref-doc {
+    grid-column: 1 / 7;
+    grid-row: 9 / 13;
 }
 
 .ref-code {

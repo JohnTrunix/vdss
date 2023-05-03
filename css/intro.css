@@ -1,25 +1,21 @@
 .logo {
     grid-column: 12 / 13;
     grid-row: 1 / 2;
-    height: 8rem;
-    width: 8rem;
+    height: 4rem;
+    aspect-ratio: 1 / 1;
+    margin-left: calc(100% - 4rem);
 }
 .title {
     grid-column: 2 / 13;
-    grid-row: 2 / 13;
+    grid-row: 2 / 8;
 }
 
 .title > h1:nth-child(2) {
     margin-left: 10rem;
 }
 
-.title > h1:last-child {
+.title > h1:nth-child(3) {
     margin-left: 20rem;
-}
-
-.subtitle {
-    grid-column: 2 / 13;
-    grid-row: 9 / 13;
 }
 
 .info-note {
