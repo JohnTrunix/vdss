@@ -44,11 +44,9 @@ new fullpage("#fullpage", {
     sectionSelector: ".section",
     slideSelector: ".slide",
 
-    // Credits
+    // Credits disables because of custom reference on last section
     credits: {
-        enabled: true,
-        label: "Made with fullPage.js",
-        position: "right",
+        enabled: false,
     },
 
     beforeLeave: function (origin, destination, direction) {
@@ -57,3 +55,16 @@ new fullpage("#fullpage", {
 });
 
 // ------------------------------- FUNCTIONS -------------------------------
+
+// Language Selection Feedback
+function changeLanguage() {
+    var selectBox = document.getElementById("language-select");
+    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+
+    if (selectedValue != "en") {
+        window.alert(
+            `Sorry, [${selectedValue}] is currently not implemented. \nWe are working on other language implementations!`
+        );
+        selectBox.value = "en";
+    }
+}
