@@ -1,3 +1,7 @@
+# Custom 
+data/*
+!data/testfile.js
+
 ## Node.js .gitignore template
 # Logs
 logs
