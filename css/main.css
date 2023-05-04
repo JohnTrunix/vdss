@@ -94,6 +94,12 @@ ul {
     margin: 3rem;
 }
 
+.h-kpi-g {
+    color: #29bf12;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
 /* Different Grid alignments ratios */
 .c-full {
     grid-column: 1 / 13;
