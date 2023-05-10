@@ -1,7 +1,9 @@
-function pipe(num) {
-    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+// Pipe function for formatting numbers with custom thousands separator
+export function pipe(num, sep = " ") {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, sep);
 }
 
+// Custom tooltip template for s1 chart
 export const s1TooltipTemplate = (data) =>
     `
     <div class="c-tooltip">
@@ -16,12 +18,6 @@ export const s1TooltipTemplate = (data) =>
                     <td class="c-tooltip-data-label">Total Buildings: </td>
                     <td class="c-tooltip-data-value">${pipe(
                         data.total_buildings
-                    )}</td>
-                </tr>
-                <tr>
-                    <td class="c-tooltip-data-label">Single Homes: </td>
-                    <td class="c-tooltip-data-value">${pipe(
-                        data.single_family_home
                     )}</td>
                 </tr>
                 <tr>

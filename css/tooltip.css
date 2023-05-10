@@ -1,18 +1,37 @@
+/* Tooltip */
+
 .c-tooltip {
     position: relative;
     display: inline-block;
-    padding: 0.8rem;
 }
 
 .c-tooltip-title {
-    font-size: 1rem;
-    font-weight: 700;
-    padding-bottom: 0.25rem;
-    margin-bottom: 0.25rem;
-    border-bottom: 1px solid #e5e5e5;
+    padding: 0.5rem;
+    background-color: #eceff1;
+    border-bottom: 1px solid #dddddd;
+}
+
+.c-tooltip-data {
+    padding: 0.3rem 0.5rem 0.5rem 0.5rem;
+}
+
+.c-tooltip-data-label {
+    padding-right: 1rem;
 }
 
 .c-tooltip-data-value {
-    padding-left: 1rem;
     text-align: end;
+    font-weight: 600;
+}
+
+/* Chart Configs */
+
+.apex-axis-title {
+    font-family: inherit;
+    font-weight: normal;
+    font-size: 1.5rem;
+}
+
+.apexcharts-svg {
+    overflow: visible;
 }

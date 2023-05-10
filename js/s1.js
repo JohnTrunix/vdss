@@ -1,5 +1,5 @@
 import { test_var2 } from "../data/testfile2.js";
-import { s1TooltipTemplate } from "./tooltipTemplate.js";
+import { pipe, s1TooltipTemplate } from "./tooltipTemplate.js";
 
 // ------------------- Data Preparation -------------------
 var easter_swiss = test_var2.filter((x) => x.region == "Eastern Switzerland");
@@ -128,17 +128,49 @@ var options = {
             }),
         },
     ],
-
+    markers: {
+        size: 20,
+        shape: "circle",
+        hover: {
+            size: 30,
+        },
+    },
     yaxis: {
+        title: {
+            text: "Single Family Homes [%]",
+            offsetX: -20,
+            offsetY: 0,
+            style: {
+                cssClass: "apex-axis-title",
+            },
+        },
         min: 30,
-        max: 80,
-        tickAmount: 5,
+        max: 75,
+        tickAmount: 9,
+        labels: {
+            formatter: function (val) {
+                return val + "%";
+            },
+        },
     },
     xaxis: {
+        title: {
+            text: "Number of Inhabitants",
+            offsetX: 0,
+            offsetY: 20,
+            style: {
+                cssClass: "apex-axis-title",
+            },
+        },
         type: "numeric",
-        min: 1600,
-        max: 1580000,
+        min: 1000,
+        max: 1600000,
         tickAmount: 10,
+        labels: {
+            formatter: function (val) {
+                return pipe(Math.floor(val / 1000), "'") + "k";
+            },
+        },
     },
     legend: {
         position: "right",
