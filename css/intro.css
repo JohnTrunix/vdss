@@ -1,9 +1,8 @@
 .logo {
-    grid-column: 12 / 13;
+    grid-column: 11 / 13;
     grid-row: 1 / 2;
-    height: 4rem;
-    aspect-ratio: 1 / 1;
-    margin-left: calc(100% - 4rem);
+    height: 100%;
+    width: 100%;
 }
 .title {
     grid-column: 2 / 13;
