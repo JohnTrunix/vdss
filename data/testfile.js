@@ -1,2 +1,35 @@
-export const test_var_headers = ['canton', 'buildings_total', 'single_family_home', 'inhabitants', 'region'];
-export const test_var = [["AG",153894,102206,703086.0,"Northwestern Switzerland"],["AI",5299,2917,16360.0,"Eastern Switzerland"],["AR",16323,9251,55585.0,"Eastern Switzerland"],["BE",238111,114053,1047473.0,"Espace Midland"],["BL",67390,46632,292817.0,"Northwestern Switzerland"],["BS",23709,9289,196036.0,"Northwestern Switzerland"],["FR",73439,44311,329809.0,"Espace Midland"],["GE",44932,25988,509448.0,"Lake Geneva Region"],["GL",13965,10022,41190.0,"Eastern Switzerland"],["GR",71340,35198,201376.0,"Eastern Switzerland"],["JU",23324,15664,73798.0,"Espace Midland"],["LU",70035,32143,420326.0,"Central Switzerland"],["NE",31387,14576,176166.0,"Espace Midland"],["NW",7960,2686,43894.0,"Central Switzerland"],["OW",9478,4101,38435.0,"Central Switzerland"],["SG",114355,68051,519245.0,"Eastern Switzerland"],["SH",19349,11839,83995.0,"Eastern Switzerland"],["SO",70176,46893,280245.0,"Espace Midland"],["SZ",32152,15775,163689.0,"Central Switzerland"],["TG",66339,40912,285964.0,"Eastern Switzerland"],["TI",113368,76348,352181.0,"Ticino"],["UR",10102,4880,37047.0,"Central Switzerland"],["VD",137083,75678,822968.0,"Lake Geneva Region"],["VS",116889,72454,353209.0,"Lake Geneva Region"],["ZG",16421,6603,129787.0,"Central Switzerland"],["ZH",227341,118612,1564662.0,"Zurich"]];
+export const test_var_headers = [
+    "canton",
+    "buildings_total",
+    "single_family_home",
+    "inhabitants",
+    "region",
+];
+export const test_var = [
+    ["AG", 153894, 102206, 703086.0, "Northwestern Switzerland"],
+    ["AI", 5299, 2917, 16360.0, "Eastern Switzerland"],
+    ["AR", 16323, 9251, 55585.0, "Eastern Switzerland"],
+    ["BE", 238111, 114053, 1047473.0, "Espace Midland"],
+    ["BL", 67390, 46632, 292817.0, "Northwestern Switzerland"],
+    ["BS", 23709, 9289, 196036.0, "Northwestern Switzerland"],
+    ["FR", 73439, 44311, 329809.0, "Espace Midland"],
+    ["GE", 44932, 25988, 509448.0, "Lake Geneva Region"],
+    ["GL", 13965, 10022, 41190.0, "Eastern Switzerland"],
+    ["GR", 71340, 35198, 201376.0, "Eastern Switzerland"],
+    ["JU", 23324, 15664, 73798.0, "Espace Midland"],
+    ["LU", 70035, 32143, 420326.0, "Central Switzerland"],
+    ["NE", 31387, 14576, 176166.0, "Espace Midland"],
+    ["NW", 7960, 2686, 43894.0, "Central Switzerland"],
+    ["OW", 9478, 4101, 38435.0, "Central Switzerland"],
+    ["SG", 114355, 68051, 519245.0, "Eastern Switzerland"],
+    ["SH", 19349, 11839, 83995.0, "Eastern Switzerland"],
+    ["SO", 70176, 46893, 280245.0, "Espace Midland"],
+    ["SZ", 32152, 15775, 163689.0, "Central Switzerland"],
+    ["TG", 66339, 40912, 285964.0, "Eastern Switzerland"],
+    ["TI", 113368, 76348, 352181.0, "Ticino"],
+    ["UR", 10102, 4880, 37047.0, "Central Switzerland"],
+    ["VD", 137083, 75678, 822968.0, "Lake Geneva Region"],
+    ["VS", 116889, 72454, 353209.0, "Lake Geneva Region"],
+    ["ZG", 16421, 6603, 129787.0, "Central Switzerland"],
+    ["ZH", 227341, 118612, 1564662.0, "Zurich"],
+];
