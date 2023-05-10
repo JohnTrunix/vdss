@@ -1,7 +1,8 @@
 # Custom 
 data/*
 !data/testfile.js
-
+!data/testfile2.js
+.vscode
 ## Node.js .gitignore template
 # Logs
 logs
