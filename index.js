@@ -62,6 +62,13 @@ new fullpage("#fullpage", {
     },
 });
 
+// render all charts on load
+s1Chart.render();
+s2Chart.render();
+s3Chart.render();
+s4Chart.render();
+s5Chart.render();
+
 // ------------------------------- FUNCTIONS -------------------------------
 
 // Language Selection Feedback
@@ -98,7 +105,7 @@ function renderChart(origin, destination) {
 
 function restartAnimation(chart) {
     chart.updateOptions(
-        {
+        (newOptions = {
             chart: {
                 animations: {
                     enabled: true,
@@ -110,14 +117,7 @@ function restartAnimation(chart) {
                     },
                 },
             },
-        },
+        }),
         (animate = true)
     );
 }
-
-// render all charts on load
-s1Chart.render();
-s2Chart.render();
-s3Chart.render();
-s4Chart.render();
-s5Chart.render();
