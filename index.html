@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <!------------------------------------------ Metadata ------------------------------------------>
-        <meta lang="en" />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
@@ -32,12 +31,6 @@
             rel="stylesheet"
             href="./node_modules/fullpage.js/dist/fullpage.min.css"
         />
-
-        <!--------------------------------------------- JS --------------------------------------------->
-        <script
-            type="text/javascript"
-            src="./node_modules/apexcharts/dist/apexcharts.min.js"
-        ></script>
     </head>
 
     <body>
@@ -83,58 +76,53 @@
             <!----------------------------------------- Page 1 ----------------------------------------->
             <div class="section">
                 <div class="content">
-                    <div class="c-v1_2-left text">
-                        <h2>Single Family Homes across Cantons and Regions</h2>
-                        <h3>Cut-off year: 2021</h3>
-                        <p>
-                            The following plot shows the number of Inhabitants
-                            and the fraction of Single Family Homes in respect
-                            to the total number of Buildings for each canton.
-                            When investigating this regional aspect, one can
-                            make several observations:
-                        </p>
-
+                    <div class="c-v1_2-left card-v">
+                        <h2>Single Family Homes across Cantons</h2>
+                        <h3>Cut-Off Year: 2021</h3>
                         <ul>
                             <li>
-                                Cantons of Central Switzerland: All these
-                                cantons have lower proportion of Single Family
-                                Homes (all below
-                                <span class="h-kpi-g">50 %</span> of the total
-                                number of buildings).
-                            </li>
-                            <li>
-                                Cantons of
                                 <span class="h-kpi-g"
-                                    >Eastern Switzerland and Lake Geneva</span
+                                    >Central Switzerland:</span
                                 >
-                                Region: These cantons show the exact opposite to
-                                the cantons of Central Switzerland. The
-                                proportion of Single Family Homes is in general
-                                over 50 %
+                                All these cantons have lower proportion of
+                                Single Family Homes this means below 50 % of the
+                                total number of buildings.
                             </li>
                             <li>
-                                Big Cities: The two cantons of Zurich (ZH) and
-                                Bern (BE) are obvious outliers in this plot. Due
-                                to their big cities (e.g., Zurich, Winterthur,
-                                Bern, Thun) they lay far more on the right side
-                                of the plot and stand out compared to the other
-                                cantons.
+                                <span class="h-kpi-g"
+                                    >Eastern Switzerland and Lake Geneva:</span
+                                >The proportion of Single Family Homes is in
+                                general over 50 %
+                            </li>
+                            <li>
+                                <span class="h-kpi-g">Big Cities:</span> The
+                                cantons Zurich (ZH) and Bern (BE) are obvious
+                                outliers in this plot due to their big cities
+                                (e.g., Zurich, Winterthur, Bern, Thun) and many
+                                inhabitants. cantons.
                             </li>
                         </ul>
-
-                        <p>
-                            These observations underline some facts that we
-                            already know: Firstly, the Cantons of Eastern
-                            Switzerland are known to be more rural and focused
-                            on agriculture and farming. Cities and villages are
-                            relatively small and less populated. This leads to
-                            the areas being less in demand and therefore, the
-                            price of land might be considerably more affordable
-                            when compared to other cantons (see more on that
-                            later -> Sabrina). Secondary, Cantons like Zug (ZG)
-                            have a lower tax load so hounding tends to be more
-                            expensive (see more on that later -> Sabrina).
+                        <p class="h-strong">
+                            These observations underline some facts:
                         </p>
+                        <ul>
+                            <li>
+                                Cantons of Eastern Switzerland are known to be
+                                <span class="h-kpi-r"
+                                    >more rural and focused on agriculture and
+                                    farming</span
+                                >. Cities and villages are relatively small and
+                                less populated. This leads to the areas being
+                                less in demand and therefore, the price of land
+                                might be considerably more affordable.
+                            </li>
+                            <li>
+                                Cantons like Zug (ZG) have a
+                                <span class="h-kpi-r">lower tax load</span> so
+                                hounding tends to be more expensive (see more on
+                                that later).
+                            </li>
+                        </ul>
                     </div>
                     <div class="chart-container c-v1_2-right">
                         <div id="s1-chart"></div>
@@ -145,7 +133,7 @@
             <!----------------------------------------- Page 2 ----------------------------------------->
             <div class="section">
                 <div class="content">
-                    <div class="c-v1_2-right text">
+                    <div class="c-v1_2-right card-v">
                         <h2>Swiss real estate market trends</h2>
                         <h3>Subheading Message 1</h3>
                         <p>
@@ -172,7 +160,7 @@
             <!----------------------------------------- Page 3 ----------------------------------------->
             <div class="section">
                 <div class="content">
-                    <div class="c-v1_3-left text">
+                    <div class="c-v1_3-left card-v">
                         <h2>Swiss real estate market trends</h2>
                         <h3>Subheading Message 1</h3>
                         <p>
@@ -199,7 +187,7 @@
             <!----------------------------------------- Page 4 ----------------------------------------->
             <div class="section">
                 <div class="content">
-                    <div class="c-v1_3-right text">
+                    <div class="c-v1_3-right card-v">
                         <h2>Swiss real estate market trends</h2>
                         <h3>Subheading Message 1</h3>
                         <p>
@@ -226,26 +214,33 @@
             <!----------------------------------------- Page 5 ----------------------------------------->
             <div class="section">
                 <div class="content">
-                    <div class="c-h1_3-top text">
+                    <div class="c-h1_2-top card-h">
                         <h2>Swiss real estate market trends</h2>
                         <h3>Subheading Message 1</h3>
-                        <p>
-                            As can be seen from the chart, real estate prices in
-                            Switzerland have shown a continuous increase over
-                            the past 5 years, especially for new buildings and
-                            apartments. This indicates high demand and limited
-                            supply.
+                        <p class="h-strong">
+                            These observations underline some facts:
                         </p>
-                        <p>
-                            As can be seen from the chart, real estate prices in
-                            Switzerland have shown a continuous increase over
-                            the past 5 years, especially for new buildings and
-                            apartments. This indicates high demand and limited
-                            supply. This indicates high demand and limited
-                            supply.
-                        </p>
+                        <ul>
+                            <li>
+                                As can be seen from the chart, real estate
+                                prices in Switzerland have shown a continuous
+                                increase. This indicates high demand and limited
+                                supply.
+                            </li>
+                            <li>
+                                As can be seen from the chart, real estate
+                                prices in Switzerland have shown a continuous
+                                increase over the past 5 years.As can be seen
+                                from the chart, real estate prices in
+                                Switzerland have shown a continuous increase
+                                over the past 5 years. As can be seen from the
+                                chart, real estate prices in Switzerland have
+                                shown a continuous increase over the past 5
+                                years.
+                            </li>
+                        </ul>
                     </div>
-                    <div class="chart-container c-h2_3-bottom">
+                    <div class="chart-container c-h1_2-bottom">
                         <div id="s5-chart"></div>
                     </div>
                 </div>
@@ -253,9 +248,9 @@
 
             <!---------------------------------------- Recap Page ---------------------------------------->
             <div class="section">
-                <div class="content">
+                <div class="content recap">
                     <h2 class="recap-title">Recap</h2>
-                    <div class="c-v1_2-right text">
+                    <div class="c-v2_3-right card-v">
                         <p>
                             "Sed ut perspiciatis unde omnis iste natus error sit
                             voluptatem accusantium doloremque laudantium, totam
@@ -276,15 +271,7 @@
                             born and I will give you a complete account of the
                             system, and expound the actual teachings of the
                             great explorer of the truth, the master-builder of
-                            human happiness. No one rejects, dislikes, or avoids
-                            pleasure itself, because it is pleasure, but because
-                            those who do not know how to pursue pleasure
-                            rationally encounter consequences that are extremely
-                            painful. Nor again is there anyone who loves or
-                            pursues or desires to obtain pain of itself, because
-                            it is pain, but because occasionally circumstances
-                            occur in which toil and pain can procure him some
-                            great pleasure.
+                            human happiness.
                         </p>
                         <a href="https://example.com/" target="_blank">
                             <button class="ref-btn">Visit our Page!</button>
@@ -299,6 +286,51 @@
                     <h2 class="ref-title">References</h2>
                     <div class="ref-data ref-box">
                         <h3>Data</h3>
+                        <div class="ref-item-container">
+                            <a
+                                href="https://www.bfs.admin.ch/bfs/de/home.html"
+                                target="_blank"
+                            >
+                                <div class="ref-item">
+                                    <img
+                                        class="ref-icon"
+                                        src="./assets/icons/table.svg"
+                                        alt="datareport"
+                                    />
+                                    Bundesamt für Statistik (BFS)
+                                </div>
+                            </a>
+                            <a href="" target="_blank">
+                                <div class="ref-item">
+                                    <img
+                                        class="ref-icon"
+                                        src="./assets/icons/table.svg"
+                                        alt="personas"
+                                    />
+                                    Source A
+                                </div>
+                            </a>
+                            <a href="" target="_blank">
+                                <div class="ref-item">
+                                    <img
+                                        class="ref-icon"
+                                        src="./assets/icons/table.svg"
+                                        alt="personas"
+                                    />
+                                    Source B
+                                </div>
+                            </a>
+                            <a href="" target="_blank">
+                                <div class="ref-item">
+                                    <img
+                                        class="ref-icon"
+                                        src="./assets/icons/table.svg"
+                                        alt="personas"
+                                    />
+                                    Source C
+                                </div>
+                            </a>
+                        </div>
                     </div>
                     <div class="ref-doc ref-box">
                         <h3>Documentation</h3>
@@ -397,19 +429,11 @@
                 </div>
             </div>
         </div>
-
-        <!----------------------------------------- Chart JS ------------------------------------------>
-        <script type="module" src="./js/s1.js"></script>
-        <script type="text/javascript" src="./js/s2.js"></script>
-        <script type="text/javascript" src="./js/s3.js"></script>
-        <script type="text/javascript" src="./js/s4.js"></script>
-        <script type="text/javascript" src="./js/s5.js"></script>
-
         <!----------------------------------------- Fullpage JS ---------------------------------------->
         <script
             type="text/javascript"
             src="./node_modules/fullpage.js/dist/fullpage.min.js"
         ></script>
-        <script type="text/javascript" src="./index.js"></script>
+        <script type="module" src="./index.js"></script>
     </body>
 </html>

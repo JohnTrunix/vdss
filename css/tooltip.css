@@ -23,15 +23,3 @@
     text-align: end;
     font-weight: 600;
 }
-
-/* Chart Configs */
-
-.apex-axis-title {
-    font-family: inherit;
-    font-weight: normal;
-    font-size: 1.5rem;
-}
-
-.apexcharts-svg {
-    overflow: visible;
-}
