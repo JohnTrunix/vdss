@@ -18,37 +18,12 @@
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
-    font-size: 12px;
+    font-size: 1.2vw;
     color: var(--text-color);
     background-color: var(--background-color);
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
-}
-
-/* Media Queries (start min 800)*/
-@media only screen and (min-width: 768px) {
-    body {
-        font-size: 16px;
-    }
-}
-
-@media only screen and (min-width: 1024px) {
-    body {
-        font-size: 20px;
-    }
-}
-
-@media only screen and (min-width: 1200px) {
-    body {
-        font-size: 28px;
-    }
-}
-
-@media only screen and (min-width: 1800px) {
-    body {
-        font-size: 32px;
-    }
 }
 
 /* Typography */
@@ -98,24 +73,23 @@ ul {
     height: 50%;
 }
 
-.text {
-    margin: 3rem;
-}
-
-.card-v {
-    margin: 5rem;
+.card {
     padding: 3rem;
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+.card-1_2 {
+    margin: 2rem 5rem;
+}
+
+.card-1_3 {
+    margin: 2rem 3rem;
 }
 
 .card-h {
-    margin: 1.5rem;
-    padding: 3rem;
-    background-color: #fff;
-    border-radius: 30px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    margin: 0 1rem;
 }
 
 /* Text Highlighting */

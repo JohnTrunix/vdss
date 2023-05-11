@@ -1,18 +1,24 @@
-.recap .card-v {
-    padding: 3.5rem 5rem;
-}
-
-.recap p {
-    margin-bottom: 2rem;
-}
 .recap-title {
     grid-column: 2 / 13;
     grid-row: 5 / 6;
     font-size: 4rem;
 }
 
+.recap p {
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.recap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem !important;
+}
+
 .ref-btn {
-    width: 30%;
+    width: 14rem;
     border: none;
     border-radius: 10px;
     color: #fff;
@@ -21,9 +27,7 @@
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 1.8rem;
-    margin-left: calc(50% - 15%);
-    margin-top: 4rem;
+    font-size: 1.3rem;
     transition: all 0.3s ease-in-out;
     animation: jump 2s ease-in-out infinite;
 }
@@ -36,12 +40,12 @@
 
 @keyframes jump {
     0% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
     50% {
-        transform: translateY(-0.2rem) scale(1.03);
+        transform: translateY(-0.2rem);
     }
     100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
     }
 }
