@@ -1,3 +1,4 @@
+import ApexCharts from "apexcharts";
 var options = {
     chart: {
         type: "treemap",
@@ -77,5 +78,7 @@ var options = {
     },
 };
 
-var chart = new ApexCharts(document.querySelector("#s4-chart"), options);
-chart.render();
+export var s4Chart = new ApexCharts(
+    document.querySelector("#s4-chart"),
+    options
+);

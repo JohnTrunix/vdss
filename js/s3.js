@@ -1,3 +1,4 @@
+import ApexCharts from "apexcharts";
 var options = {
     series: [
         {
@@ -59,5 +60,7 @@ var options = {
     },
 };
 
-var chart = new ApexCharts(document.querySelector("#s3-chart"), options);
-chart.render();
+export var s3Chart = new ApexCharts(
+    document.querySelector("#s3-chart"),
+    options
+);

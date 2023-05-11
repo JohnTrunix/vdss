@@ -1,3 +1,4 @@
+import ApexCharts from "apexcharts";
 import { test_var2 } from "../data/testfile2.js";
 import { pipe, s1TooltipTemplate } from "./tooltipTemplate.js";
 
@@ -13,6 +14,15 @@ var ticino = test_var2.filter((x) => x.region == "Ticino");
 var zurich = test_var2.filter((x) => x.region == "Zurich");
 
 // ------------------- Chart Preparation -------------------
+var colors = [
+    "#0ad2ff",
+    "#2962ff",
+    "#9500ff",
+    "#ff0059",
+    "#ff8c00",
+    "#b4e600",
+    "#0fffdb",
+];
 var options = {
     chart: {
         type: "scatter",
@@ -130,6 +140,7 @@ var options = {
     ],
     markers: {
         size: 20,
+        colors: colors,
         shape: "circle",
         hover: {
             size: 30,
@@ -178,6 +189,9 @@ var options = {
         floating: true,
         offsetY: 10,
         offsetX: 5,
+        markers: {
+            fillColors: colors,
+        },
     },
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
@@ -190,5 +204,7 @@ var options = {
 };
 
 // ------------------- Chart Generation -------------------
-var chart = new ApexCharts(document.querySelector("#s1-chart"), options);
-chart.render();
+export var s1Chart = new ApexCharts(
+    document.querySelector("#s1-chart"),
+    options
+);

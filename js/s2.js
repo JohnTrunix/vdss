@@ -1,3 +1,4 @@
+import ApexCharts from "apexcharts";
 const dataS2 = [
     { year: 2015, new: 23000, old: 20000, apartments: 10000 },
     { year: 2016, new: 2000, old: 25000, apartments: 15000 },
@@ -10,7 +11,7 @@ const dataS2 = [
     { year: 2023, new: 65000, old: 60000, apartments: 80000 },
 ];
 
-var s2TrendOptions = {
+var options = {
     chart: {
         type: "bar",
         height: "100%",
@@ -68,8 +69,7 @@ var s2TrendOptions = {
 };
 
 // export chart instance
-var chartS2 = new ApexCharts(
+export var s2Chart = new ApexCharts(
     document.querySelector("#s2-chart"),
-    s2TrendOptions
+    options
 );
-chartS2.render();

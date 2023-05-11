@@ -1,3 +1,10 @@
+// ------------------------------- Imports -------------------------------
+import { s1Chart } from "./js/s1";
+import { s2Chart } from "./js/s2";
+import { s3Chart } from "./js/s3";
+import { s4Chart } from "./js/s4";
+import { s5Chart } from "./js/s5";
+
 // ------------------------------- VARIABLES -------------------------------
 var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
 var scrollCount = 0; //number of times the user has to scroll to go to the next section
@@ -50,6 +57,7 @@ new fullpage("#fullpage", {
     },
 
     beforeLeave: function (origin, destination, direction) {
+        renderChart(origin, destination);
         return true;
     },
 });
@@ -68,3 +76,48 @@ function changeLanguage() {
         selectBox.value = "en";
     }
 }
+
+//chart animation restart
+function renderChart(origin, destination) {
+    if (destination.anchor == "s1") {
+        restartAnimation(s1Chart);
+    }
+    if (destination.anchor == "s2") {
+        restartAnimation(s2Chart);
+    }
+    if (destination.anchor == "s3") {
+        restartAnimation(s3Chart);
+    }
+    if (destination.anchor == "s4") {
+        restartAnimation(s4Chart);
+    }
+    if (destination.anchor == "s5") {
+        restartAnimation(s5Chart);
+    }
+}
+
+function restartAnimation(chart) {
+    chart.updateOptions(
+        {
+            chart: {
+                animations: {
+                    enabled: true,
+                    easing: "easeinout",
+                    speed: 1200,
+                    animateGradually: {
+                        enabled: true,
+                        delay: 200,
+                    },
+                },
+            },
+        },
+        (animate = true)
+    );
+}
+
+// render all charts on load
+s1Chart.render();
+s2Chart.render();
+s3Chart.render();
+s4Chart.render();
+s5Chart.render();
