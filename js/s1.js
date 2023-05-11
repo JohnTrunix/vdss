@@ -1,17 +1,17 @@
 import ApexCharts from "apexcharts";
-import { test_var2 } from "../data/testfile2.js";
-import { pipe, s1TooltipTemplate } from "./tooltipTemplate.js";
+import { data } from "../data/s1DataTest.js";
+import { pipe, s1Tooltip } from "./tooltip.js";
 
-// ------------------- Data Preparation -------------------
-var easter_swiss = test_var2.filter((x) => x.region == "Eastern Switzerland");
-var espace_midland = test_var2.filter((x) => x.region == "Espace Midland");
-var northwest_swiss = test_var2.filter(
+// ------------------- Data Preparation for each region -------------------
+var easter_swiss = data.filter((x) => x.region == "Eastern Switzerland");
+var espace_midland = data.filter((x) => x.region == "Espace Midland");
+var northwest_swiss = data.filter(
     (x) => x.region == "Northwestern Switzerland"
 );
-var lake_geneva = test_var2.filter((x) => x.region == "Lake Geneva Region");
-var central_swiss = test_var2.filter((x) => x.region == "Central Switzerland");
-var ticino = test_var2.filter((x) => x.region == "Ticino");
-var zurich = test_var2.filter((x) => x.region == "Zurich");
+var lake_geneva = data.filter((x) => x.region == "Lake Geneva Region");
+var central_swiss = data.filter((x) => x.region == "Central Switzerland");
+var ticino = data.filter((x) => x.region == "Ticino");
+var zurich = data.filter((x) => x.region == "Zurich");
 
 // ------------------- Chart Preparation -------------------
 var colors = [
@@ -198,7 +198,7 @@ var options = {
             var data =
                 w.globals.initialSeries[seriesIndex].data[dataPointIndex];
 
-            return s1TooltipTemplate(data);
+            return s1Tooltip(data);
         },
     },
 };

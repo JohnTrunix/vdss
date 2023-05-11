@@ -1,4 +1,4 @@
-export const test_var2 = [
+export const data = [
     {
         canton: "AG",
         buildings_total: 153894,

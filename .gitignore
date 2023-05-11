@@ -1,7 +1,6 @@
 # Custom 
 data/*
-!data/testfile.js
-!data/testfile2.js
+!data/s1DataTest.js
 .vscode
 ## Node.js .gitignore template
 # Logs
