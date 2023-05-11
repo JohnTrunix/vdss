@@ -62,6 +62,7 @@ new fullpage("#fullpage", {
     },
 });
 
+// ------------------------------- Chart init/handling -------------------------------
 // render all charts on load
 s1Chart.render();
 s2Chart.render();
@@ -69,55 +70,36 @@ s3Chart.render();
 s4Chart.render();
 s5Chart.render();
 
-// ------------------------------- FUNCTIONS -------------------------------
+//chart animation restart
+function restartAnimation(chart) {
+    const chartOptions = {
+        chart: {
+            animations: {
+                enabled: true,
+                easing: "easeinout",
+                speed: 1200,
+                animateGradually: {
+                    enabled: true,
+                    delay: 200,
+                },
+            },
+        },
+    };
 
-// Language Selection Feedback
-function changeLanguage() {
-    var selectBox = document.getElementById("language-select");
-    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-
-    if (selectedValue != "en") {
-        window.alert(
-            `Sorry, [${selectedValue}] is currently not implemented. \nWe are working on other language implementations!`
-        );
-        selectBox.value = "en";
-    }
+    chart.updateOptions(chartOptions, true, true, true);
 }
 
-//chart animation restart
+// render chart on scroll to site handler
 function renderChart(origin, destination) {
     if (destination.anchor == "s1") {
         restartAnimation(s1Chart);
-    }
-    if (destination.anchor == "s2") {
+    } else if (destination.anchor == "s2") {
         restartAnimation(s2Chart);
-    }
-    if (destination.anchor == "s3") {
+    } else if (destination.anchor == "s3") {
         restartAnimation(s3Chart);
-    }
-    if (destination.anchor == "s4") {
+    } else if (destination.anchor == "s4") {
         restartAnimation(s4Chart);
-    }
-    if (destination.anchor == "s5") {
+    } else if (destination.anchor == "s5") {
         restartAnimation(s5Chart);
     }
-}
-
-function restartAnimation(chart) {
-    chart.updateOptions(
-        (newOptions = {
-            chart: {
-                animations: {
-                    enabled: true,
-                    easing: "easeinout",
-                    speed: 1200,
-                    animateGradually: {
-                        enabled: true,
-                        delay: 200,
-                    },
-                },
-            },
-        }),
-        (animate = true)
-    );
 }
