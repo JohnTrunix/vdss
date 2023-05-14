@@ -6,7 +6,7 @@
 }
 .title {
     grid-column: 2 / 13;
-    grid-row: 2 / 8;
+    grid-row: 3 / 9;
 }
 
 .title > h1:nth-child(2) {
@@ -17,39 +17,37 @@
     margin-left: 20rem;
 }
 
+.subheading {
+    color: var(--subheading-color);
+}
+
 .intro-img {
     grid-column: 8 / 11;
     grid-row: 2 / 6;
     font-size: 10rem;
 }
 
-.info-note {
-    grid-column: 8 / 13;
-    grid-row: 11 / 13;
-    border-left: solid 0.5rem #2196f3;
-    background: #e7f3fe;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-}
-
-.info-note > p {
-    margin: 0.3rem 0 0 0;
-}
-
 .info-navigation {
-    grid-column: 1 / 8;
-    grid-row: 11 / 13;
+    grid-column: 1 / 13;
+    grid-row: 12 / 13;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
     font-size: 1.1rem;
+    color: var(--subheading-color);
+    font-size: 1rem;
+}
+
+.info-navigation span::before {
+    content: " | ";
+    margin: 0 0.5rem;
 }
 
 .language-selector {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     position: relative;
+    color: #fff;
 }
 
 .language-selector::after {
@@ -72,14 +70,14 @@ select {
     width: 100%;
     cursor: pointer;
     outline: none;
+    color: #fff;
 }
 
 option {
+    color: #666;
     background-color: #fff;
-    color: #333;
 }
 option:hover,
 option:focus {
-    background-color: #2196f3;
     color: #fff;
 }

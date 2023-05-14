@@ -5,14 +5,14 @@
 
 :root {
     --content-padding: 2rem;
-    --heading-color: #8f2d56;
-    --primary-color: #d81159;
-    --secondary-color: #0496ff;
+    --heading-color: #c8553d;
+    --subheading-color: #fff;
+    --primary-color: #2d3047;
+    --secondary-color: #588b8b;
     --accent-color: #f9ed69;
     --text-color: #666;
-    --background-color: #fff;
-    --highlight-color-green: #29bf12;
-    --highlight-color-red: #d81159;
+    --background-color: #2d3047;
+    --highlight-color: #d37764;
 }
 
 body {
@@ -77,7 +77,7 @@ ul {
     padding: 3rem;
     background-color: #fff;
     border-radius: 30px;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
 }
 
 .card-1_2 {
@@ -98,25 +98,20 @@ ul {
     font-weight: 600;
 }
 
-.h-kpi-g {
-    color: var(--highlight-color-green);
-    font-weight: 600;
-}
-
-.h-kpi-r {
-    color: var(--highlight-color-red);
+.h-kpi {
+    color: var(--highlight-color);
     font-weight: 600;
 }
 
 .h-chart-action {
-    background-color: var(--accent-color);
+    color: #ffd166;
     font-weight: 600;
     text-decoration: underline dotted;
     cursor: pointer;
 }
 
 .h-chart-action::after {
-    content: " 🔎";
+    content: url("../assets/icons/click.svg");
 }
 
 /* Chart Configs */
@@ -129,6 +124,14 @@ ul {
 
 .apexcharts-svg {
     overflow: visible;
+}
+
+.apexcharts-legend-text {
+    color: #fff !important;
+}
+
+svg text {
+    fill: #fff;
 }
 
 /* Different Grid alignments ratios */

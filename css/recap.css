@@ -2,6 +2,7 @@
     grid-column: 2 / 13;
     grid-row: 5 / 6;
     font-size: 4rem;
+    color: var(--heading-color);
 }
 
 .recap p {
