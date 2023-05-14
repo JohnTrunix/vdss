@@ -39,13 +39,6 @@ new fullpage("#fullpage", {
     // Design
     verticalCentered: true,
     fitToSection: true,
-    /*sectionsColor: [
-            "#f2f2f2",
-            "#4BBFC3",
-            "#7BAABE",
-            "whitesmoke",
-            "#000",
-        ],*/
 
     // Custom selectors
     sectionSelector: ".section",
@@ -85,7 +78,6 @@ function restartAnimation(chart) {
             },
         },
     };
-
     chart.updateOptions(chartOptions, true, true, true);
 }
 
@@ -103,3 +95,20 @@ function renderChart(origin, destination) {
         restartAnimation(s5Chart);
     }
 }
+
+// extra chart events
+var chartEventListener = document.querySelectorAll("span#chart-action");
+chartEventListener.forEach((element) => {
+    element.addEventListener("mouseover", function () {
+        var chartAction = element.getAttribute("chartAction");
+        var chartId = element.getAttribute("chartId");
+        var chartEventNo = element.getAttribute("chartEventNo");
+
+        if (chartAction == "zoom") {
+            if (chartId == "s5") {
+                console.log("zooming");
+                s5Chart.zoomX(2018, 2019);
+            }
+        }
+    });
+});

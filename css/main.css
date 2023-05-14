@@ -108,6 +108,13 @@ ul {
     font-weight: 600;
 }
 
+.h-chart-action {
+    background-color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: underline dotted;
+    cursor: pointer;
+}
+
 /* Chart Configs */
 
 .apex-axis-title {

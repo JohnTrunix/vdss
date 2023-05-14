@@ -39,7 +39,16 @@ var options = {
         width: [4, 4, 4],
         curve: "smooth",
     },
-    labels: dataS5.map((x) => x.year),
+    xaxis: {
+        type: "numeric",
+        categories: dataS5.map((x) => x.year),
+        tickAmount: dataS5.length - 1,
+        labels: {
+            formatter: function (val) {
+                return val.toFixed(0);
+            },
+        },
+    },
     yaxis: {
         min: 0,
         max: 100000,
