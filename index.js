@@ -99,7 +99,7 @@ function renderChart(origin, destination) {
 // extra chart events
 var chartEventListener = document.querySelectorAll("span#chart-action");
 chartEventListener.forEach((element) => {
-    element.addEventListener("mouseover", function () {
+    element.addEventListener("click", function () {
         var chartAction = element.getAttribute("chartAction");
         var chartId = element.getAttribute("chartId");
         var chartEventNo = element.getAttribute("chartEventNo");

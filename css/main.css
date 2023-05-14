@@ -115,6 +115,10 @@ ul {
     cursor: pointer;
 }
 
+.h-chart-action::after {
+    content: " 🔎";
+}
+
 /* Chart Configs */
 
 .apex-axis-title {

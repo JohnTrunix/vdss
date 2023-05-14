@@ -17,6 +17,12 @@
     margin-left: 20rem;
 }
 
+.intro-img {
+    grid-column: 8 / 11;
+    grid-row: 2 / 6;
+    font-size: 10rem;
+}
+
 .info-note {
     grid-column: 8 / 13;
     grid-row: 11 / 13;
@@ -26,14 +32,18 @@
     font-size: 1.1rem;
 }
 
-.info-note::before {
-    content: "Note: ";
-    font-weight: 600;
-    position: relative;
-}
-
 .info-note > p {
     margin: 0.3rem 0 0 0;
+}
+
+.info-navigation {
+    grid-column: 1 / 8;
+    grid-row: 11 / 13;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
 }
 
 .language-selector {
