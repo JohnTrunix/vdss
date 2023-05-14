@@ -29,18 +29,22 @@
 
 .info-navigation {
     grid-column: 1 / 13;
-    grid-row: 12 / 13;
+    grid-row: 12;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.1rem;
     color: var(--subheading-color);
-    font-size: 1rem;
 }
 
-.info-navigation span::before {
-    content: " | ";
-    margin: 0 0.5rem;
+.info-navigation > span::before {
+    content: "|";
+    margin-right: 1rem;
+}
+
+.info-navigation > span:last-child::after {
+    content: "|";
+    margin-left: 1rem;
 }
 
 .language-selector {
