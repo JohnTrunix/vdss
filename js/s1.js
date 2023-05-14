@@ -15,13 +15,13 @@ var zurich = data.filter((x) => x.region == "Zurich");
 
 // ------------------- Chart Preparation -------------------
 var colors = [
-    "#0ad2ff",
-    "#2962ff",
-    "#9500ff",
-    "#ff0059",
-    "#ff8c00",
-    "#b4e600",
-    "#0fffdb",
+    "#588B8B",
+    "#F28F3B",
+    "#C8553D",
+    "#93B7BE",
+    "#ffd166",
+    "#ff9b71",
+    "#8b8bae",
 ];
 var options = {
     chart: {
