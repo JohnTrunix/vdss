@@ -37,7 +37,44 @@
     </head>
 
     <body>
+        <!----------------------------------------- Cookie Consent ----------------------------------------->
+        <aside id="cookie" class="cookie-container" scroll="no">
+            <div class="cookie-wrapper">
+                <img
+                    class=""
+                    src="./assets/icons/cookie.png"
+                    alt="cookie"
+                    type="image/webp"
+                />
+                <div class="cookie-content">
+                    <header>We respect your privacy!</header>
+                    <p>
+                        But if you want to support us we would like to track
+                        your visit on our website anonymously.
+                    </p>
+                    <p class="info">
+                        You can always change your decision by deleting or
+                        changing the cookie from your browser cache.
+                    </p>
+                    <div class="cookie-buttons">
+                        <button
+                            onclick="acceptCookies(true)"
+                            class="cookie-btn"
+                        >
+                            Accept
+                        </button>
+                        <button
+                            onclick="acceptCookies(false)"
+                            class="cookie-btn"
+                        >
+                            Decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
         <div id="fullpage">
+            <div class="section"></div>
             <!----------------------------------------- Start Page ----------------------------------------->
             <div class="section">
                 <div class="content">

@@ -113,7 +113,7 @@ ul {
     content: url("../assets/icons/click.svg");
 }
 
-/* Chart Configs */
+/* Extra Apexchart Configs */
 
 .apex-axis-title {
     font-family: inherit;
@@ -131,6 +131,12 @@ ul {
 
 svg text {
     fill: #fff;
+}
+
+/* Extra Fullpage Configs */
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+    background: #fff !important;
 }
 
 /* Different Grid alignments ratios */
