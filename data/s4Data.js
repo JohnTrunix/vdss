@@ -1,4 +1,4 @@
-export const data = [
+export const s4Data = [
     {
         canton: "AG",
         buildings_total: 153894,

@@ -1,15 +1,10 @@
 import ApexCharts from "apexcharts";
-const dataS2 = [
-    { year: 2015, new: 23000, old: 20000, apartments: 10000 },
-    { year: 2016, new: 2000, old: 25000, apartments: 15000 },
-    { year: 2017, new: 40000, old: 1000, apartments: 20000 },
-    { year: 2018, new: 42300, old: 35000, apartments: 40000 },
-    { year: 2019, new: 45000, old: 40000, apartments: 30000 },
-    { year: 2020, new: 54545, old: 10000, apartments: 10000 },
-    { year: 2021, new: 55000, old: 50000, apartments: 70000 },
-    { year: 2022, new: 1000, old: 5778, apartments: 75000 },
-    { year: 2023, new: 65000, old: 60000, apartments: 80000 },
-];
+import { s2Data } from "../data/s2Data.js";
+import { pipe } from "./tooltip.js";
+
+// ------------------- Data Preparation -------------------
+
+// ------------------- Chart Preparation -------------------
 
 var options = {
     chart: {
@@ -19,39 +14,6 @@ var options = {
         toolbar: {
             show: true,
         },
-    },
-    plotOptions: {
-        bar: {
-            horizontal: false,
-        },
-    },
-    dataLabels: {
-        enabled: false,
-    },
-    series: [
-        {
-            name: "New Build",
-            data: dataS2.map((x) => x.new),
-        },
-        {
-            name: "Old Build",
-            data: dataS2.map((x) => x.old),
-        },
-        {
-            name: "Apartments",
-            data: dataS2.map((x) => x.apartments),
-        },
-    ],
-    yaxis: {
-        min: 0,
-        max: 100000,
-    },
-    xaxis: {
-        categories: dataS2.map((x) => x.year),
-    },
-    legend: {
-        position: "top",
-        horizontalAlign: "center",
     },
     grid: {
         show: true,
@@ -66,9 +28,50 @@ var options = {
             },
         },
     },
+    series: [
+        {
+            name: "Average Square Meter Price",
+            data: s2Data.map((x) => {
+                return {
+                    x: x.Country,
+                    y: x.Average,
+                    fillColor: x.color,
+                };
+            }),
+        },
+    ],
+    plotOptions: {
+        bar: {
+            horizontal: false,
+            borderRadius: 4,
+        },
+    },
+    dataLabels: {
+        enabled: false,
+    },
+    xaxis: {
+        labels: {
+            rotate: -90,
+        },
+    },
+    yaxis: {
+        reversed: false,
+        labels: {
+            formatter: function (val) {
+                return pipe(val) + " CHF";
+            },
+        },
+    },
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return pipe(val, "'") + " CHF";
+            },
+        },
+    },
 };
 
-// export chart instance
+// ------------------- Chart Generation -------------------
 export var s2Chart = new ApexCharts(
     document.querySelector("#s2-chart"),
     options

@@ -1,31 +1,20 @@
 import ApexCharts from "apexcharts";
-import { data } from "../data/s1DataTest.js";
-import { pipe, s1Tooltip } from "./tooltip.js";
+import { s1Data } from "../data/s1Data.js";
 
-// ------------------- Data Preparation for each region -------------------
-var easter_swiss = data.filter((x) => x.region == "Eastern Switzerland");
-var espace_midland = data.filter((x) => x.region == "Espace Midland");
-var northwest_swiss = data.filter(
-    (x) => x.region == "Northwestern Switzerland"
-);
-var lake_geneva = data.filter((x) => x.region == "Lake Geneva Region");
-var central_swiss = data.filter((x) => x.region == "Central Switzerland");
-var ticino = data.filter((x) => x.region == "Ticino");
-var zurich = data.filter((x) => x.region == "Zurich");
+// ------------------- Data Preparation -------------------
+var data2018 = s1Data.map((x) => {
+    return {
+        x: x.Country,
+        y: x["2018"],
+        color: x.color,
+    };
+});
 
 // ------------------- Chart Preparation -------------------
-var colors = [
-    "#588B8B",
-    "#F28F3B",
-    "#C8553D",
-    "#93B7BE",
-    "#ffd166",
-    "#ff9b71",
-    "#8b8bae",
-];
+
 var options = {
     chart: {
-        type: "scatter",
+        type: "bar",
         height: "100%",
         width: "100%",
         toolbar: {
@@ -47,158 +36,38 @@ var options = {
     },
     series: [
         {
-            name: "Eastern Switzerland",
-            data: easter_swiss.map((x) => {
+            name: "Ratio of Homeownership",
+            data: data2018.map((x) => {
                 return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Espace Midland",
-            data: espace_midland.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Northwestern Switzerland",
-            data: northwest_swiss.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Lake Geneva Region",
-            data: lake_geneva.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Central Switzerland",
-            data: central_swiss.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Ticino",
-            data: ticino.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
-                };
-            }),
-        },
-        {
-            name: "Zurich",
-            data: zurich.map((x) => {
-                return {
-                    x: x.inhabitants,
-                    y: x.prc_single_home,
-                    canton: x.canton,
-                    region: x.region,
-                    total_buildings: x.buildings_total,
-                    single_family_home: x.single_family_home,
+                    x: x.x,
+                    y: x.y,
+                    fillColor: x.color,
                 };
             }),
         },
     ],
-    markers: {
-        size: 20,
-        colors: colors,
-        shape: "circle",
-        hover: {
-            size: 30,
+    plotOptions: {
+        bar: {
+            horizontal: true,
+            borderRadius: 4,
         },
     },
-    yaxis: {
-        title: {
-            text: "Single Family Homes [%]",
-            offsetX: -20,
-            offsetY: 0,
-            style: {
-                cssClass: "apex-axis-title",
-            },
-        },
-        min: 30,
-        max: 75,
-        tickAmount: 9,
+    dataLabels: {
+        enabled: false,
+    },
+    xaxis: {
         labels: {
             formatter: function (val) {
                 return val + "%";
             },
         },
     },
-    xaxis: {
-        title: {
-            text: "Number of Inhabitants",
-            offsetX: 0,
-            offsetY: 20,
-            style: {
-                cssClass: "apex-axis-title",
-            },
-        },
-        type: "numeric",
-        min: 1000,
-        max: 1600000,
-        tickAmount: 10,
-        labels: {
-            formatter: function (val) {
-                return pipe(Math.floor(val / 1000), "'") + "k";
-            },
-        },
-    },
-    legend: {
-        position: "right",
-        horizontalAlign: "center",
-        floating: true,
-        offsetY: 10,
-        offsetX: 5,
-        markers: {
-            fillColors: colors,
-        },
-    },
-    tooltip: {
-        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-            var data =
-                w.globals.initialSeries[seriesIndex].data[dataPointIndex];
 
-            return s1Tooltip(data);
+    tooltip: {
+        y: {
+            formatter: function (val) {
+                return val + " %";
+            },
         },
     },
 };

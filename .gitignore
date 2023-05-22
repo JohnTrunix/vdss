@@ -1,6 +1,4 @@
 # Custom 
-data/*
-!data/s1DataTest.js
 .vscode
 ## Node.js .gitignore template
 # Logs

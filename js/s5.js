@@ -1,78 +1,218 @@
 import ApexCharts from "apexcharts";
-const dataS5 = [
-    { year: 2015, new: 23000, old: 20000, apartments: 10000 },
-    { year: 2016, new: 2000, old: 25000, apartments: 15000 },
-    { year: 2017, new: 40000, old: 1000, apartments: 20000 },
-    { year: 2018, new: 42300, old: 35000, apartments: 40000 },
-    { year: 2019, new: 45000, old: 40000, apartments: 30000 },
-    { year: 2020, new: 54545, old: 10000, apartments: 10000 },
-    { year: 2021, new: 55000, old: 50000, apartments: 70000 },
-    { year: 2022, new: 1000, old: 5778, apartments: 75000 },
-    { year: 2023, new: 65000, old: 60000, apartments: 80000 },
-];
+import { s5Data } from "../data/s5Data.js";
 
+// ------------------- Data Preparation -------------------
+function mapData(data) {
+    var data2 = [];
+    for (const [key, value] of Object.entries(data)) {
+        if (key != "work_category") {
+            data2.push({
+                x: key,
+                y: value,
+            });
+        }
+    }
+    return data2;
+}
+
+var carpentry_work = mapData(
+    s5Data.filter((x) => x.work_category == "General carpentry work")[0]
+);
+var elevators = mapData(
+    s5Data.filter((x) => x.work_category == "Elevators")[0]
+);
+var construction_cleaning = mapData(
+    s5Data.filter((x) => x.work_category == "Construction cleaning")[0]
+);
+var floor_coverings = mapData(
+    s5Data.filter((x) => x.work_category == "Floor coverings")[0]
+);
+var sealing_coatings = mapData(
+    s5Data.filter((x) => x.work_category == "Sealing coatings")[0]
+);
+var earthworks = mapData(
+    s5Data.filter((x) => x.work_category == "Earthworks")[0]
+);
+var attic = mapData(s5Data.filter((x) => x.work_category == "Attic")[0]);
+var windows = mapData(s5Data.filter((x) => x.work_category == "Windows")[0]);
+var scaffolding = mapData(
+    s5Data.filter((x) => x.work_category == "Scaffolding")[0]
+);
+var plastering = mapData(
+    s5Data.filter((x) => x.work_category == "Plastering work")[0]
+);
+var gardening = mapData(
+    s5Data.filter((x) => x.work_category == "Gardening work")[0]
+);
+var kitchen = mapData(
+    s5Data.filter((x) => x.work_category == "Kitchen fittings")[0]
+);
+var painting = mapData(
+    s5Data.filter((x) => x.work_category == "Painting work")[0]
+);
+var masonry_reinforced = mapData(
+    s5Data.filter(
+        (x) => x.work_category == "Masonry and reinforced concrete work"
+    )[0]
+);
+var metal_construction = mapData(
+    s5Data.filter((x) => x.work_category == "Metal construction work")[0]
+);
+var tiling = mapData(s5Data.filter((x) => x.work_category == "Tiling work")[0]);
+var sheet_metal = mapData(
+    s5Data.filter((x) => x.work_category == "Sheet metal work")[0]
+);
+var civil_engineering = mapData(
+    s5Data.filter((x) => x.work_category == "Civil engineering works")[0]
+);
+var carpentry = mapData(
+    s5Data.filter((x) => x.work_category == "Carpentry work")[0]
+);
+
+// ------------------- Chart Preparation -------------------
 var options = {
     chart: {
-        type: "line",
-        stacked: false,
+        type: "heatmap",
         height: "100%",
         width: "100%",
-        toolbar: {
-            show: true,
-        },
     },
     series: [
         {
-            name: "New Build",
-            data: dataS5.map((x) => x.new),
+            name: "Carpentry Work",
+            data: carpentry,
         },
         {
-            name: "Old Build",
-            data: dataS5.map((x) => x.old),
+            name: "Civil Engineering",
+            data: civil_engineering,
         },
         {
-            name: "Apartments",
-            data: dataS5.map((x) => x.apartments),
+            name: "Sheet Metal Work",
+            data: sheet_metal,
+        },
+        {
+            name: "Tiling Work",
+            data: tiling,
+        },
+        {
+            name: "Metal Construction Work",
+            data: metal_construction,
+        },
+        {
+            name: "Masonry and Reinforced Concrete",
+            data: masonry_reinforced,
+        },
+        {
+            name: "Painting Work",
+            data: painting,
+        },
+        {
+            name: "Kitchen Fittings",
+            data: kitchen,
+        },
+        {
+            name: "Gardening Work",
+            data: gardening,
+        },
+        {
+            name: "Plastering Work",
+            data: plastering,
+        },
+        {
+            name: "Scaffolding",
+            data: scaffolding,
+        },
+        {
+            name: "Windows",
+            data: windows,
+        },
+        {
+            name: "Attic",
+            data: attic,
+        },
+        {
+            name: "Earthworks",
+            data: earthworks,
+        },
+        {
+            name: "Sealing Coatings",
+            data: sealing_coatings,
+        },
+        {
+            name: "Floor Coverings",
+            data: floor_coverings,
+        },
+        {
+            name: "Construction Cleaning",
+            data: construction_cleaning,
+        },
+        {
+            name: "Elevators",
+            data: elevators,
+        },
+        {
+            name: "Carpentry Work",
+            data: carpentry_work,
         },
     ],
-    stroke: {
-        width: [4, 4, 4],
-        curve: "smooth",
+    dataLabels: {
+        enabled: false,
+    },
+    plotOptions: {
+        heatmap: {
+            reverseNegativeShade: true,
+            shadeIntensity: 0.5,
+            distributed: false,
+            enableShades: false,
+            colorScale: {
+                ranges: [
+                    {
+                        from: -30,
+                        to: -10,
+                        color: "#4054c7",
+                        name: "low",
+                    },
+                    {
+                        from: -10,
+                        to: 0,
+                        color: "#b4cdfa",
+                        name: "medium",
+                    },
+                    {
+                        from: 0,
+                        to: 10,
+                        color: "#f1cbb8",
+                        name: "high",
+                    },
+                    {
+                        from: 10,
+                        to: 40,
+                        color: "#bb1a2b",
+                        name: "extreme",
+                    },
+                ],
+            },
+        },
     },
     xaxis: {
-        type: "numeric",
-        categories: dataS5.map((x) => x.year),
-        tickAmount: dataS5.length - 1,
+        type: "category",
         labels: {
-            formatter: function (val) {
-                return val.toFixed(0);
-            },
+            rotate: -90,
         },
     },
     yaxis: {
-        min: 0,
-        max: 100000,
+        type: "category",
     },
+
     tooltip: {
-        shared: true,
-        intersect: false,
-    },
-    grid: {
-        show: true,
-        xaxis: {
-            lines: {
-                show: true,
-            },
-            yaxis: {
-                lines: {
-                    show: true,
-                },
+        y: {
+            formatter: function (val) {
+                return val.toFixed(2) + "%";
             },
         },
     },
 };
 
-// export chart instance
+// ------------------- Chart Generation -------------------
 export var s5Chart = new ApexCharts(
     document.querySelector("#s5-chart"),
     options
