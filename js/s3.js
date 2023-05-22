@@ -1,49 +1,37 @@
 import ApexCharts from "apexcharts";
+import { s3Data } from "../data/s3Data.js";
+
+// ------------------- Data Preparation -------------------
+var condos = s3Data.map((x) => {
+    return {
+        x: x.Date,
+        y: x.c_diff_abs_per,
+    };
+});
+
+var houses = s3Data.map((x) => {
+    return {
+        x: x.Date,
+        y: x.h_diff_abs_per,
+    };
+});
+
+var appartments = s3Data.map((x) => {
+    return {
+        x: x.Date,
+        y: x.a_diff_abs_per,
+    };
+});
+
+// ------------------- Chart Preparation -------------------
 var options = {
-    series: [
-        {
-            name: "Website Blog",
-            type: "column",
-            data: [440, 505, 414, 671, 227, 413, 201, 352, 752, 320, 257, 160],
-        },
-        {
-            name: "Social Media",
-            type: "line",
-            data: [230, 420, 305, 270, 403, 202, 170, 310, 202, 202, 120, 106],
-        },
-    ],
     chart: {
         type: "line",
-        width: "100%",
         height: "100%",
+        width: "100%",
         toolbar: {
             show: true,
         },
-    },
-    stroke: {
-        width: [0, 4],
-    },
-    yaxis: {
-        min: 0,
-        max: 1000,
-    },
-    labels: [
-        "01.01.2001",
-        "02.01.2001",
-        "03.01.2001",
-        "04.01.2001",
-        "05.01.2001",
-        "06.01.2001",
-        "07.01.2001",
-        "08.01.2001",
-        "09.01.2001",
-        "10.01.2001",
-        "11.01.2001",
-        "12.01.2001",
-    ],
-    legend: {
-        position: "top",
-        horizontalAlign: "center",
     },
     grid: {
         show: true,
@@ -58,8 +46,50 @@ var options = {
             },
         },
     },
-};
+    series: [
+        {
+            name: "Condos",
+            data: condos,
+        },
+        {
+            name: "Houses",
+            data: houses,
+        },
+        {
+            name: "Appartments",
+            data: appartments,
+        },
+    ],
+    xaxis: {
+        type: "datetime",
+        tickAmount: 6 * 2,
+        labels: {
+            formatter: function (val) {
+                var date = new Date(val);
+                var month = date.getMonth();
+                var year = date.getFullYear();
+                return month + "/" + year;
+            },
+        },
+    },
 
+    yaxis: {
+        labels: {
+            formatter: function (val) {
+                return val.toFixed(2) + "%";
+            },
+        },
+    },
+
+    legend: {
+        position: "right",
+        horizontalAlign: "center",
+        floating: true,
+        offsetY: 10,
+        offsetX: 5,
+    },
+};
+// ------------------- Chart Generation -------------------
 export var s3Chart = new ApexCharts(
     document.querySelector("#s3-chart"),
     options

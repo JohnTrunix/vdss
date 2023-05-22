@@ -24,7 +24,25 @@ new fullpage("#fullpage", {
 
     navigation: true,
     navigationPosition: "right",
-    anchors: ["intro", "s1", "s2", "s3", "s4", "s5", "recap", "end"],
+    slidesNavigation: true,
+    slidesNavPosition: "bottom",
+    controlArrowsHTML: [
+        '<div class="my-arrow left">◄</div>',
+        '<div class="my-arrow right">►</div>',
+    ],
+
+    anchors: [
+        "intro",
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "recap",
+        "end",
+    ],
     navigationTooltips: [
         "Intro",
         "Section 1",
@@ -32,6 +50,8 @@ new fullpage("#fullpage", {
         "Section 3",
         "Section 4",
         "Section 5",
+        "Section 6",
+        "Section 7",
         "Recap",
         "End",
     ],

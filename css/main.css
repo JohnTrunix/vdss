@@ -134,10 +134,26 @@ svg text {
     fill: #fff;
 }
 
+
 /* Extra Fullpage Configs */
+
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
     background: #fff !important;
+}
+
+.my-arrow {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.fp-next {
+    right: 3rem !important;
+}
+
+.fp-slidesNav.fp-bottom {
+    display: flex;
+    justify-content: center;
 }
 
 /* Different Grid alignments ratios */

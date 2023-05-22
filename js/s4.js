@@ -1,83 +1,209 @@
 import ApexCharts from "apexcharts";
+import { s4Data } from "../data/s4Data.js";
+import { pipe, s1Tooltip } from "./tooltip.js";
+
+// ------------------- Data Preparation for each region -------------------
+var easter_swiss = s4Data.filter((x) => x.region == "Eastern Switzerland");
+var espace_midland = s4Data.filter((x) => x.region == "Espace Midland");
+var northwest_swiss = s4Data.filter(
+    (x) => x.region == "Northwestern Switzerland"
+);
+var lake_geneva = s4Data.filter((x) => x.region == "Lake Geneva Region");
+var central_swiss = s4Data.filter((x) => x.region == "Central Switzerland");
+var ticino = s4Data.filter((x) => x.region == "Ticino");
+var zurich = s4Data.filter((x) => x.region == "Zurich");
+
+// ------------------- Chart Preparation -------------------
+var colors = [
+    "#588B8B",
+    "#F28F3B",
+    "#C8553D",
+    "#93B7BE",
+    "#ffd166",
+    "#ff9b71",
+    "#8b8bae",
+];
 var options = {
     chart: {
-        type: "treemap",
+        type: "scatter",
         height: "100%",
         width: "100%",
+        toolbar: {
+            show: true,
+        },
+    },
+    grid: {
+        show: true,
+        xaxis: {
+            lines: {
+                show: true,
+            },
+            yaxis: {
+                lines: {
+                    show: true,
+                },
+            },
+        },
     },
     series: [
         {
-            data: [
-                {
-                    x: "INTC",
-                    y: 1.2,
-                },
-                {
-                    x: "GS",
-                    y: 0.4,
-                },
-                {
-                    x: "CVX",
-                    y: -1.4,
-                },
-                {
-                    x: "GE",
-                    y: 2.7,
-                },
-                {
-                    x: "CAT",
-                    y: -0.3,
-                },
-                {
-                    x: "RTX",
-                    y: 5.1,
-                },
-                {
-                    x: "CSCO",
-                    y: -2.3,
-                },
-                {
-                    x: "JNJ",
-                    y: 2.1,
-                },
-                {
-                    x: "PG",
-                    y: 0.3,
-                },
-                {
-                    x: "TRV",
-                    y: 0.12,
-                },
-                {
-                    x: "MMM",
-                    y: -2.31,
-                },
-                {
-                    x: "NKE",
-                    y: 3.98,
-                },
-                {
-                    x: "IYT",
-                    y: 1.67,
-                },
-            ],
+            name: "Eastern Switzerland",
+            data: easter_swiss.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Espace Midland",
+            data: espace_midland.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Northwestern Switzerland",
+            data: northwest_swiss.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Lake Geneva Region",
+            data: lake_geneva.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Central Switzerland",
+            data: central_swiss.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Ticino",
+            data: ticino.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
+        },
+        {
+            name: "Zurich",
+            data: zurich.map((x) => {
+                return {
+                    x: x.inhabitants,
+                    y: x.prc_single_home,
+                    canton: x.canton,
+                    region: x.region,
+                    total_buildings: x.buildings_total,
+                    single_family_home: x.single_family_home,
+                };
+            }),
         },
     ],
-    legend: {
-        show: false,
+    markers: {
+        size: 20,
+        colors: colors,
+        shape: "circle",
+        hover: {
+            size: 30,
+        },
     },
-    dataLabels: {
-        enabled: true,
-        style: {
-            fontSize: "12px",
+    yaxis: {
+        title: {
+            text: "Single Family Homes [%]",
+            offsetX: -20,
+            offsetY: 0,
+            style: {
+                cssClass: "apex-axis-title",
+            },
         },
-        formatter: function (text, op) {
-            return [text, op.value];
+        min: 30,
+        max: 75,
+        tickAmount: 9,
+        labels: {
+            formatter: function (val) {
+                return val + "%";
+            },
         },
-        offsetY: -4,
+    },
+    xaxis: {
+        title: {
+            text: "Number of Inhabitants",
+            offsetX: 0,
+            offsetY: 20,
+            style: {
+                cssClass: "apex-axis-title",
+            },
+        },
+        type: "numeric",
+        min: 1000,
+        max: 1600000,
+        tickAmount: 10,
+        labels: {
+            formatter: function (val) {
+                return pipe(Math.floor(val / 1000), "'") + "k";
+            },
+        },
+    },
+    legend: {
+        position: "right",
+        horizontalAlign: "center",
+        floating: true,
+        offsetY: 10,
+        offsetX: 5,
+        markers: {
+            fillColors: colors,
+        },
+    },
+    tooltip: {
+        custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+            var data =
+                w.globals.initialSeries[seriesIndex].data[dataPointIndex];
+
+            return s1Tooltip(data);
+        },
     },
 };
 
+// ------------------- Chart Generation -------------------
 export var s4Chart = new ApexCharts(
     document.querySelector("#s4-chart"),
     options
