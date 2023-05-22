@@ -102,6 +102,13 @@ ul {
     font-weight: 600;
 }
 
+.h-kpi-line {
+    color: var(--highlight-color);
+    font-weight: 600;
+    text-decoration: underline dotted;
+    display: block;
+}
+
 .h-chart-action {
     color: #ffd166;
     font-weight: 600;
@@ -112,6 +119,57 @@ ul {
 
 .h-chart-action::after {
     content: url("../assets/icons/click.svg");
+}
+
+/* Table Styling */
+.table {
+    margin: 2rem 0;
+    margin-right: 5rem;
+    color: #fff;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 8px;
+}
+
+tr.tr-underline {
+    border-bottom: 1px solid #dddddd;
+    font-weight: 600;
+}
+
+tr.tr-subtotal {
+    border-top: 1px solid #dddddd;
+}
+
+tr.tr-total {
+    border-top: 1px solid #dddddd;
+    border-bottom: 3px solid #dddddd;
+    font-weight: 600;
+}
+
+tr > td:last-child {
+    text-align: right;
+}
+
+/* Extra Tax Ref Configs */
+.tax-def {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.tax-def > div {
+    margin-top: 1rem;
+    width: 45%;
+    text-align: justify;
 }
 
 /* Extra Apexchart Configs */
@@ -134,7 +192,6 @@ svg text {
     fill: #fff;
 }
 
-
 /* Extra Fullpage Configs */
 
 #fp-nav ul li a span,
@@ -149,6 +206,11 @@ svg text {
 
 .fp-next {
     right: 3rem !important;
+}
+
+.my-arrow:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .fp-slidesNav.fp-bottom {
