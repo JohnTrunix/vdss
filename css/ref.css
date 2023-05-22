@@ -77,3 +77,16 @@
     color: rgba(255, 255, 255, 0.7);
     margin-top: 1rem;
 }
+
+.ref-cookie {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: underline;
+    all: unset;
+}
+
+.ref-cookie:hover {
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}

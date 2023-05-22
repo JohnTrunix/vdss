@@ -26,6 +26,7 @@ function handleCookie(trackingCookie) {
     if (trackingCookie === "true" || trackingCookie === "false") {
         document.getElementById("cookie").style.display = "none";
         setScroll(true);
+        loadGoogleAnalytics();
     } else {
         document.getElementById("cookie").style.display = "block";
         setScroll(false);
@@ -63,6 +64,12 @@ function acceptCookies(accept) {
     setScroll(true);
 }
 
+// trigger for changing cookie value
+function changeCookie() {
+    document.getElementById("cookie").style.display = "block";
+    setScroll(false);
+}
+
 // set cookie in cache
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -71,6 +78,7 @@ function setCookie(cname, cvalue, exdays) {
     document.cookie =
         cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=Lax";
     trackingCookie = cvalue;
+    loadGoogleAnalytics();
 }
 
 // set scroll access
@@ -79,5 +87,30 @@ function setScroll(status) {
         fullpage_api.setAllowScrolling(false);
     } else {
         fullpage_api.setAllowScrolling(true);
+    }
+}
+
+// ----------------------- Google Analytics -----------------------
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+
+function loadGoogleAnalytics() {
+    if (trackingCookie === "true") {
+        gtag("js", new Date());
+        gtag("config", "G-MZ7S5XNTNR", {
+            cookie_flags: "SameSite=None;secure",
+        });
+    }
+}
+
+//custom pageView tracking
+function sendPageView(pageTitle) {
+    if (trackingCookie === "true") {
+        gtag("event", "slide_view", {
+            page: document.location.href,
+            title: pageTitle,
+        });
     }
 }

@@ -53,6 +53,10 @@ new fullpage("#fullpage", {
         renderChart(origin, destination);
         return true;
     },
+
+    afterLoad: function (origin, destination, direction) {
+        sendPageView(destination.anchor);
+    },
 });
 
 // ------------------------------- Chart init/handling -------------------------------
@@ -106,7 +110,6 @@ chartEventListener.forEach((element) => {
 
         if (chartAction == "zoom") {
             if (chartId == "s5") {
-                console.log("zooming");
                 s5Chart.zoomX(2018, 2019);
             }
         }

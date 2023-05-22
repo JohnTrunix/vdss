@@ -107,6 +107,7 @@ ul {
     font-weight: 600;
     text-decoration: underline dotted;
     cursor: pointer;
+    margin: 0 0.5rem;
 }
 
 .h-chart-action::after {
