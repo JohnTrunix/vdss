@@ -107,13 +107,14 @@ ul {
     font-weight: 600;
     text-decoration: underline dotted;
     cursor: pointer;
+    margin: 0 0.5rem;
 }
 
 .h-chart-action::after {
     content: url("../assets/icons/click.svg");
 }
 
-/* Chart Configs */
+/* Extra Apexchart Configs */
 
 .apex-axis-title {
     font-family: inherit;
@@ -133,7 +134,9 @@ svg text {
     fill: #fff;
 }
 
-/* Fullpage Changes */
+
+/* Extra Fullpage Configs */
+
 #fp-nav ul li a span,
 .fp-slidesNav ul li a span {
     background: #fff !important;

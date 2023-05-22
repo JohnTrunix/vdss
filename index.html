@@ -18,6 +18,10 @@
         <title>Real Estate Analysis</title>
 
         <!-------------------------------------------- JS ---------------------------------------------->
+        <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-MZ7S5XNTNR"
+        ></script>
         <script type="text/javascript" src="./js/utils.js"></script>
 
         <!-------------------------------------------- CSS --------------------------------------------->
@@ -37,6 +41,42 @@
     </head>
 
     <body>
+        <!----------------------------------------- Cookie Consent ----------------------------------------->
+        <aside id="cookie" class="cookie-container">
+            <div class="cookie-wrapper">
+                <img
+                    class=""
+                    src="./assets/icons/cookie.png"
+                    alt="cookie"
+                    type="image/webp"
+                />
+                <div class="cookie-content">
+                    <header>We respect your privacy!</header>
+                    <p>
+                        But if you want to support us we would like to track
+                        your visit on our website anonymously.
+                    </p>
+                    <p class="info">
+                        You can always change your decision by visiting the
+                        References page!
+                    </p>
+                    <div class="cookie-buttons">
+                        <button
+                            onclick="acceptCookies(true)"
+                            class="cookie-btn"
+                        >
+                            Accept
+                        </button>
+                        <button
+                            onclick="acceptCookies(false)"
+                            class="cookie-btn"
+                        >
+                            Decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </aside>
         <div id="fullpage">
             <!----------------------------------------- Start Page ----------------------------------------->
             <div class="section">
@@ -59,24 +99,20 @@
                     <div class="title">
                         <h1>Navigating</h1>
                         <h1>Swiss</h1>
-                        <h1>Real Estate</h1>
+                        <h1>Real Estate ⤵</h1>
                         <h2 class="subheading">
                             Exploring the Swiss real estate market and get some
                             Insights!
                         </h2>
                     </div>
                     <div class="info-navigation">
-                        <span>Charts are interactive! </span>
-                        <span>
-                            Note the chart menu in the upper right corner
-                        </span>
-                        <span>
-                            This Story only created for Desktop Devices
-                        </span>
+                        <span>Interactive Charts!</span>
+                        <span>Chart Menu at the top right corners</span>
+                        <span> Story only created for Desktop Devices </span>
                         <span>
                             Click on
-                            <span class="h-chart-action"> special infos</span>
-                            to see more informaitons in the chart
+                            <span class="h-chart-action">special action</span>
+                            for more information in the charts
                         </span>
                     </div>
                 </div>
@@ -300,7 +336,7 @@
             <!---------------------------------------- Recap Page ---------------------------------------->
             <div class="section">
                 <div class="content">
-                    <h2 class="recap-title">Recap</h2>
+                    <h2 class="recap-title">Recap ↺</h2>
                     <div class="c-v2_3-right card card-1_2 recap">
                         <div>
                             <p>
@@ -327,9 +363,16 @@
                                 master-builder of human happiness.
                             </p>
                         </div>
-                        <a href="https://example.com/" target="_blank">
-                            <button class="ref-btn">Visit our Page!</button>
-                        </a>
+                        <div class="btn-container">
+                            <a href="https://example.com/" target="_blank">
+                                <button class="ref-btn">Visit our Page!</button>
+                            </a>
+                            <a href="https://example.com/" target="_blank">
+                                <button class="ref-btn">
+                                    Sign up for our Newsletter
+                                </button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -469,6 +512,13 @@
                             solely responsible for any reliance placed on such
                             information.
                         </p>
+                        <button
+                            id="update-cookie"
+                            class="ref-cookie"
+                            onclick="changeCookie()"
+                        >
+                            Change Cookie Settings
+                        </button>
                     </div>
                 </div>
             </div>
