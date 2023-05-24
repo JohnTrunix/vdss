@@ -160,16 +160,99 @@ tr > td:last-child {
 }
 
 /* Extra Tax Ref Configs */
-.tax-def {
+.tax-card {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 6rem 5rem;
 }
 
-.tax-def > div {
-    margin-top: 1rem;
-    width: 45%;
+.tax-sub-card {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding: 1rem 3rem;
+    margin: 0;
+}
+
+.tax-pro {
+    background-color: #abebc6;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.tax-con {
+    background-color: #f5b7b1;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.tax-sub-card h2 {
+    text-transform: uppercase;
+    font-size: 2.2rem;
+    margin: 2rem 0;
+}
+
+.tax-sub-card span {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    align-self: center;
+}
+
+.tooltip-icon {
+    width: 1rem;
+    aspect-ratio: 1;
+    animation: tooltip 3s infinite ease-in-out;
+}
+
+/* scale animation */
+@keyframes tooltip {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 40vw;
+    background-color: #fff;
+    color: #000;
     text-align: justify;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 125%;
+    left: calc(50% - 30vw);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 1rem;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip:hover .tooltip-icon {
+    filter: invert(1);
 }
 
 /* Extra Apexchart Configs */

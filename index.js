@@ -4,6 +4,7 @@ import { s2Chart } from "./js/s2";
 import { s3Chart } from "./js/s3";
 import { s4Chart } from "./js/s4";
 import { s5Chart } from "./js/s5";
+import { s6Chart } from "./js/s6";
 
 // ------------------------------- VARIABLES -------------------------------
 var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
@@ -86,6 +87,7 @@ s2Chart.render();
 s3Chart.render();
 s4Chart.render();
 s5Chart.render();
+s6Chart.render();
 
 //chart animation restart
 function restartAnimation(chart) {
@@ -117,6 +119,8 @@ function renderChart(origin, destination) {
         restartAnimation(s4Chart);
     } else if (destination.anchor == "s5") {
         restartAnimation(s5Chart);
+    } else if (destination.anchor == "s6") {
+        restartAnimation(s6Chart);
     }
 }
 

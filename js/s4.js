@@ -1,6 +1,6 @@
 import ApexCharts from "apexcharts";
 import { s4Data } from "../data/s4Data.js";
-import { pipe, s1Tooltip } from "./tooltip.js";
+import { pipe, s4Tooltip } from "./tooltip.js";
 
 // ------------------- Data Preparation for each region -------------------
 var easter_swiss = s4Data.filter((x) => x.region == "Eastern Switzerland");
@@ -198,7 +198,7 @@ var options = {
             var data =
                 w.globals.initialSeries[seriesIndex].data[dataPointIndex];
 
-            return s1Tooltip(data);
+            return s4Tooltip(data);
         },
     },
 };

@@ -72,14 +72,14 @@
 }
 
 .ref-disclaimer {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.7);
     margin-top: 1rem;
 }
 
 .ref-cookie {
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: underline;
