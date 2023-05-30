@@ -1,8 +1,10 @@
 .recap-title {
-    grid-column: 2 / 4;
-    grid-row: 5 / 6;
+    grid-column: 1 / 4;
+    grid-row: 6 / 7;
     font-size: 7rem;
     color: var(--heading-color);
+    margin-left: calc(100% / 2 - 10rem / 2);
+    width: 10rem;
 }
 
 .recap p {
@@ -11,9 +13,7 @@
 }
 
 .recap {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    grid-column: 5 / 13;
+    grid-row: 1 / 13;
     padding: 4rem !important;
 }

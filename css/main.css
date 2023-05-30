@@ -219,19 +219,23 @@ tr > td:last-child {
     color: var(--text-color);
     text-align: justify;
     border-radius: 15px;
-    padding: 25px;
+    padding: 20px;
     position: absolute;
     z-index: 1;
     top: 125%;
     left: calc(50% - 15vw);
     opacity: 0;
     transition: opacity 0.3s;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+.slide .content .text {
+    margin-left: 3.5rem;
 }
 
 /* Extra Apexchart Configs */
@@ -248,6 +252,15 @@ tr > td:last-child {
 
 .apexcharts-legend-text {
     color: #fff !important;
+}
+
+.apexcharts-tooltip-title {
+    color: #000 !important;
+    font-weight: 600;
+}
+
+.apexcharts-tooltip-text {
+    color: #000 !important;
 }
 
 svg text {
