@@ -21,7 +21,7 @@ export const s1Data = [
         2020: "96.1",
         2021: "95.3",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Croatia",
@@ -45,7 +45,7 @@ export const s1Data = [
         2020: "91.3",
         2021: "90.5",
         2022: "91.1",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Hungary",
@@ -69,7 +69,7 @@ export const s1Data = [
         2020: "91.3",
         2021: "91.7",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Serbia",
@@ -93,7 +93,7 @@ export const s1Data = [
         2020: "86",
         2021: "89.4",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Poland",
@@ -117,7 +117,7 @@ export const s1Data = [
         2020: "85.6",
         2021: "86.8",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Latvia",
@@ -141,7 +141,7 @@ export const s1Data = [
         2020: "81.2",
         2021: "83.2",
         2022: "83.1",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Norway",
@@ -165,7 +165,7 @@ export const s1Data = [
         2020: "80.8",
         2021: ":",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Czechia",
@@ -189,7 +189,7 @@ export const s1Data = [
         2020: "78.9",
         2021: "78.3",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Spain",
@@ -213,7 +213,7 @@ export const s1Data = [
         2020: "75.1",
         2021: "75.8",
         2022: "76",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Slovenia",
@@ -237,7 +237,7 @@ export const s1Data = [
         2020: "74.6",
         2021: "76.1",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Portugal",
@@ -261,7 +261,7 @@ export const s1Data = [
         2020: "77.3",
         2021: "78.3",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Italy",
@@ -285,7 +285,7 @@ export const s1Data = [
         2020: "75.1",
         2021: "73.7",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Belgium",
@@ -309,7 +309,7 @@ export const s1Data = [
         2020: "71.1",
         2021: "71.3",
         2022: "72.5",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Netherlands",
@@ -333,7 +333,7 @@ export const s1Data = [
         2020: "69.1",
         2021: "70.1",
         2022: "70.6",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "United Kingdom",
@@ -357,7 +357,7 @@ export const s1Data = [
         2020: ":",
         2021: ":",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "France",
@@ -381,7 +381,7 @@ export const s1Data = [
         2020: "63.6",
         2021: "64.7",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Denmark",
@@ -405,7 +405,7 @@ export const s1Data = [
         2020: "59.3",
         2021: "59.2",
         2022: ":",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Austria",
@@ -429,7 +429,7 @@ export const s1Data = [
         2020: "55.3",
         2021: "54.2",
         2022: "51.4",
-        color: "#718dbf",
+        color: "#93B7BE",
     },
     {
         Country: "Switzerland",
@@ -453,6 +453,6 @@ export const s1Data = [
         2020: "42.3",
         2021: "42.2",
         2022: ":",
-        color: "#d65a7e",
+        color: "#C8553D",
     },
 ];

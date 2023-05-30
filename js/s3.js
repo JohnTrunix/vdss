@@ -24,6 +24,7 @@ var appartments = s3Data.map((x) => {
 });
 
 // ------------------- Chart Preparation -------------------
+var colors = ["#C8553D", "#588B8B", "#8b8bae"];
 var options = {
     chart: {
         type: "line",
@@ -33,6 +34,7 @@ var options = {
             show: true,
         },
     },
+    colors: colors,
     grid: {
         show: true,
         xaxis: {

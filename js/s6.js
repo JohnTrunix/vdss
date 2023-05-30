@@ -10,12 +10,6 @@ const data = [
     { x: "Argau", y: 84, i: "info" },
     { x: "Thurgau", y: 31, i: "info" },
     { x: "Schaffhausen", y: 70, i: "info" },
-    { x: "Ticino", y: 300, i: "info" },
-    { x: "Appenzell", y: 44, i: "info" },
-    { x: "Basel", y: 68, i: "info" },
-    { x: "Bern", y: 28, i: "info" },
-    { x: "Wallis", y: 19, i: "info" },
-    { x: "Solothurn", y: 290, i: "info" },
 ];
 
 //sort data by y value (descending)
@@ -24,6 +18,15 @@ var sortedData = data.sort(function (a, b) {
 });
 
 // ------------------- Chart Preparation -------------------
+var colors = [
+    "#588B8B",
+    "#F28F3B",
+    "#C8553D",
+    "#93B7BE",
+    "#ffd166",
+    "#ff9b71",
+    "#8b8bae",
+];
 var options = {
     chart: {
         type: "treemap",
@@ -35,6 +38,7 @@ var options = {
             data: sortedData,
         },
     ],
+    colors: colors,
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
             var data =
