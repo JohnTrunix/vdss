@@ -33,7 +33,7 @@
 }
 
 .info-navigation {
-    grid-column: 1 / 13;
+    grid-column: 2 / 12;
     grid-row: 12;
     display: flex;
     justify-content: space-between;
@@ -78,7 +78,7 @@ select {
     appearance: none;
     background-color: transparent;
     background-image: none;
-    border: 1px solid #ccc;
+    border: 0;
     padding: 0.5rem 1rem;
     font-size: 1rem;
     width: 100%;
