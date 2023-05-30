@@ -1,20 +1,24 @@
 import ApexCharts from "apexcharts";
+import { s6Data } from "../data/s6Data.js";
 import { s6Tooltip } from "./tooltip.js";
 
 // ------------------- Data Preparation -------------------
-const data = [
-    { x: "Zurich", y: 550, i: "info" },
-    { x: "Zug", y: 149, i: "info" },
-    { x: "Geneva", y: 184, i: "info" },
-    { x: "Lucerne", y: 190, i: "info" },
-    { x: "Argau", y: 84, i: "info" },
-    { x: "Thurgau", y: 31, i: "info" },
-    { x: "Schaffhausen", y: 70, i: "info" },
-];
-
-//sort data by y value (descending)
-var sortedData = data.sort(function (a, b) {
-    return b.y - a.y;
+var sortedData = s6Data.sort((a, b) => b.population - a.population);
+sortedData = sortedData.map((x) => {
+    return {
+        x: x.region,
+        y: x.population,
+        population_density: x.population_density,
+        area_total: x.area_total,
+        lang_german: x.lang_german,
+        lang_french: x.lang_french,
+        lang_italian: x.lang_italian,
+        lang_romansh: x.lang_romansh,
+        lang_english: x.lang_english,
+        income_tax: x.income_tax,
+        profit_tax: x.profit_tax,
+        wealth_tax: x.wealth_tax,
+    };
 });
 
 // ------------------- Chart Preparation -------------------
@@ -38,6 +42,12 @@ var options = {
             data: sortedData,
         },
     ],
+    plotOptions: {
+        treemap: {
+            distributed: true,
+            enableShades: false,
+        },
+    },
     colors: colors,
     tooltip: {
         custom: function ({ series, seriesIndex, dataPointIndex, w }) {
