@@ -1,0 +1,22 @@
+project:
+    output-dir: _build
+
+toc: true
+number-sections: true
+
+format:
+    html:
+        theme: united
+
+        code-fold: false
+        code-copy: true
+        highlight-style: github
+
+        standalone: true
+        embed-resources: true
+        self-contained: true
+        self-contained-math: true
+
+    pdf:
+        documentclass: article
+        papersize: A4

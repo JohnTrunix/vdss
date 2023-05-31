@@ -1,8 +1,8 @@
 # Custom 
 .vscode
-docs/*
-!docs/*.qmd
-!docs/*.md
+docs/_build
+docs/.quarto
+
 
 ## Node.js .gitignore template
 # Logs
