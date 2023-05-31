@@ -1,5 +1,35 @@
-import pandas as pd
+---
+title: "Data Report"
+subtitle: "Data Report for our Data Storytelling"
+author: "DS-22t"
+date: "2023-05-31"
+format: 
+    html:
+        theme: default
+        toc: true
+        toc_depth: 3
+        toc-expand: true
+        number-sections: true
+        code-fold: false
 
+    pdf:
+        toc: true
+        number-sections: true
+---
+
+# Introduction
+
+# Data
+
+# Methods
+
+# Results
+
+# Exports
+
+```{python}
+#| eval: false
+import pandas as pd
 
 def generate_data_js(df: pd.DataFrame, js_file_name: str, variable_name: str):
     """
@@ -16,8 +46,4 @@ def generate_data_js(df: pd.DataFrame, js_file_name: str, variable_name: str):
     with open(js_file_name, "w") as f:
         f.write(f"export const {variable_name}_headers = {headers};\n")
         f.write(f"export const {variable_name} = {json_data};")
-
-
-if __name__ == "__main__":
-    df = pd.read_csv("data.csv")
-    generate_data_js(df, "testfile.js", "test_var")
+```
