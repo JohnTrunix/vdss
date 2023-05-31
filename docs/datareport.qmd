@@ -1,0 +1,39 @@
+---
+title: "Data Report"
+author: "DS-22t"
+date: "2023-05-31"
+---
+
+## Data Sources
+
+| Data Source | Description | Link |
+| ----------- | ----------- | ---- |
+| a | b | c |
+| d | e | f |
+| g | h | i |
+
+
+## Data Dictionary
+
+| Variable | Description | Type |
+| -------- | ----------- | ---- |
+| a | b | c |
+| d | e | f |
+| g | h | i |
+
+
+```{python}
+#| eval: false
+import pandas as pd
+
+df = pd.read_csv('data.csv')
+df.head()
+```
+
+
+### Mermaid Diagram
+```{mermaid}
+graph LR
+    A[Data] --> B[Data Report] --> C[Data Dictionary] --> D[Data Model]
+```
+
