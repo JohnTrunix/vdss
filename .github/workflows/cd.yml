@@ -20,6 +20,12 @@ jobs:
               with:
                   tinytex: true
 
+            - name: Setup Python Environment 🐍
+              uses: actions/setup-python@v4
+              with:
+                  python-version: "3.10"
+            - run: pip install -r docs/requirements.txt
+
             - name: Checkout 🛎️
               uses: actions/checkout@v3
 
