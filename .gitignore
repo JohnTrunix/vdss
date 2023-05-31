@@ -2,6 +2,7 @@
 .vscode
 docs/_build
 docs/.quarto
+docs/.gitignore
 
 
 ## Node.js .gitignore template
