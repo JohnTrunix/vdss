@@ -126,22 +126,31 @@ th {
 }
 
 tr.tr-underline {
-    border-bottom: 1px solid #dddddd;
-    font-weight: 600;
-}
-
-tr.tr-subtotal {
-    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #fff;
 }
 
 tr.tr-total {
-    border-top: 1px solid #dddddd;
-    border-bottom: 3px solid #dddddd;
+    border-top: 1px solid #fff;
+    border-bottom: 3px solid #fff;
     font-weight: 600;
 }
 
 tr > td:last-child {
     text-align: right;
+}
+
+tr > th:last-child {
+    text-align: right;
+}
+
+.td-achieved {
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.td-not-achieved {
+    color: var(--heading-color);
+    font-weight: 600;
 }
 
 .text {
