@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "parcel index.html",
         "build": "parcel build index.html --public-url ./ --dist-dir ./build --no-cache",
+        "bt": "npm run build && npx serve build",
         "quarto": "quarto render docs",
         "clean": "rm -rf build && rm -rf dist && rm -rf .parcel-cache && rm -rf docs/_build && rm -rf docs/.quarto"
     },
