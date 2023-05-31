@@ -150,7 +150,7 @@ var options = {
             data: elevators,
         },
         {
-            name: "Carpentry Work",
+            name: "General Carpentry Work",
             data: carpentry_work,
         },
     ],
