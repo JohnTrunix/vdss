@@ -74,10 +74,6 @@ new fullpage("#fullpage", {
         renderChart(origin, destination);
         return true;
     },
-
-    afterLoad: function (origin, destination, direction) {
-        sendPageView(destination.anchor);
-    },
 });
 
 // ------------------------------- Chart init/handling -------------------------------
@@ -123,19 +119,3 @@ function renderChart(origin, destination) {
         restartAnimation(s6Chart);
     }
 }
-
-// extra chart events
-var chartEventListener = document.querySelectorAll("span#chart-action");
-chartEventListener.forEach((element) => {
-    element.addEventListener("click", function () {
-        var chartAction = element.getAttribute("chartAction");
-        var chartId = element.getAttribute("chartId");
-        var chartEventNo = element.getAttribute("chartEventNo");
-
-        if (chartAction == "zoom") {
-            if (chartId == "s5") {
-                s5Chart.zoomX(2018, 2019);
-            }
-        }
-    });
-});
