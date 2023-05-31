@@ -4,7 +4,9 @@
     "license": "GPL-3.0",
     "scripts": {
         "dev": "parcel index.html",
-        "build": "parcel build index.html --public-url ./ --dist-dir ./build --no-cache"
+        "build": "parcel build index.html --public-url ./ --dist-dir ./build --no-cache",
+        "quarto": "quarto render docs",
+        "clean": "rm -rf build && rm -rf dist && rm -rf .parcel-cache && rm -rf docs/_build && rm -rf docs/.quarto"
     },
     "devDependencies": {
         "buffer": "^5.7.1",
@@ -21,14 +23,21 @@
         "fullpage.js": "^4.0.20"
     },
     "parcelIgnore": [
-        "docs.html"
+        "datareport.html",
+        "personas.html"
     ],
     "staticFiles": [
         {
-            "staticPath": "docs/_build/docs.html"
+            "staticPath": "docs/_build/datareport.html"
         },
         {
-            "staticPath": "docs/_build/docs.pdf"
+            "staticPath": "docs/_build/datareport.pdf"
+        },
+        {
+            "staticPath": "docs/_build/personas.html"
+        },
+        {
+            "staticPath": "docs/_build/personas.pdf"
         }
     ]
 }
