@@ -9,11 +9,22 @@
 
 .recap p {
     margin-bottom: 2rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .recap {
     grid-column: 5 / 13;
     grid-row: 1 / 13;
-    padding: 4rem !important;
+    padding: 0 4rem !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@supports (initial-letter: 2) {
+    .recap div p::first-letter {
+        color: var(--secondary-color);
+        initial-letter: 2;
+        padding-right: 1rem;
+    }
 }

@@ -76,19 +76,20 @@ var options = {
     },
 
     yaxis: {
+        tickAmount: 6,
         labels: {
             formatter: function (val) {
-                return val.toFixed(2) + "%";
+                return Math.round(val) + "%";
             },
         },
     },
 
     legend: {
-        position: "right",
-        horizontalAlign: "center",
+        position: "left",
+        horizontalAlign: "left",
         floating: true,
-        offsetY: 10,
-        offsetX: 5,
+        offsetY: 15,
+        offsetX: 50,
     },
 };
 // ------------------- Chart Generation -------------------

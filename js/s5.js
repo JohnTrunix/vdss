@@ -167,24 +167,24 @@ var options = {
                 ranges: [
                     {
                         from: -30,
-                        to: -10,
+                        to: -10.5,
                         color: "#588B8B",
                         name: "low",
                     },
                     {
-                        from: -10,
+                        from: -10.6,
                         to: 0,
                         color: "#93B7BE",
                         name: "medium",
                     },
                     {
-                        from: 0,
+                        from: 0.01,
                         to: 10,
                         color: "#dc9283",
                         name: "high",
                     },
                     {
-                        from: 10,
+                        from: 10.1,
                         to: 40,
                         color: "#C8553D",
                         name: "extreme",
@@ -196,7 +196,9 @@ var options = {
     xaxis: {
         type: "category",
         labels: {
-            rotate: -90,
+            rotate: 0,
+            hideOverlappingLabels: false,
+            trim: true,
         },
     },
     yaxis: {

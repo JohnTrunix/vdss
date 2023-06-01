@@ -23,13 +23,13 @@ sortedData = sortedData.map((x) => {
 
 // ------------------- Chart Preparation -------------------
 var colors = [
-    "#588B8B",
-    "#F28F3B",
-    "#C8553D",
-    "#93B7BE",
-    "#ffd166",
-    "#ff9b71",
     "#8b8bae",
+    "#93B7BE",
+    "#C8553D",
+    "#F28F3B",
+    "#ff9b71",
+    "#588B8B",
+    "#ffd166",
 ];
 var options = {
     chart: {
@@ -46,6 +46,14 @@ var options = {
         treemap: {
             distributed: true,
             enableShades: false,
+        },
+    },
+    xaxis: {
+        axisBorder: {
+            show: false,
+        },
+        axisTicks: {
+            show: false,
         },
     },
     colors: colors,

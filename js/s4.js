@@ -33,15 +33,15 @@ var options = {
         },
     },
     grid: {
-        show: true,
+        show: false,
         xaxis: {
             lines: {
                 show: true,
             },
-            yaxis: {
-                lines: {
-                    show: true,
-                },
+        },
+        yaxis: {
+            lines: {
+                show: true,
             },
         },
     },
@@ -139,7 +139,7 @@ var options = {
         },
     ],
     markers: {
-        size: 20,
+        size: 15,
         colors: colors,
         shape: "circle",
         hover: {
@@ -162,6 +162,9 @@ var options = {
             formatter: function (val) {
                 return val + "%";
             },
+        },
+        axisBorder: {
+            show: true,
         },
     },
     xaxis: {
@@ -187,8 +190,8 @@ var options = {
         position: "right",
         horizontalAlign: "center",
         floating: true,
-        offsetY: 10,
-        offsetX: 5,
+        offsetY: 30,
+        offsetX: 10,
         markers: {
             fillColors: colors,
         },

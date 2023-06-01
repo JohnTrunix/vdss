@@ -42,7 +42,7 @@ var options = {
     ],
     plotOptions: {
         bar: {
-            horizontal: false,
+            horizontal: true,
             borderRadius: 4,
         },
     },
@@ -54,11 +54,11 @@ var options = {
             rotate: -90,
         },
     },
-    yaxis: {
+    xaxis: {
         reversed: false,
         labels: {
             formatter: function (val) {
-                return pipe(val) + " CHF";
+                return Math.round(val / 1000) + "k CHF/m²";
             },
         },
     },

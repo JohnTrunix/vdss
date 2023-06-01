@@ -108,9 +108,12 @@ ul {
 
 /* Table Styling */
 .table {
-    margin: 2rem 0;
+    margin: 2rem 0 5rem 0;
     margin-right: 5rem;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 table {
@@ -164,12 +167,41 @@ tr > th:last-child {
     margin-left: 1rem;
 }
 
+.tax-title {
+    grid-row: 6 / 7 !important;
+    grid-column: 1 / 5 !important;
+    justify-self: center;
+    align-self: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tax-title h2 {
+    font-size: 3.5rem;
+    margin: 0;
+}
+
+.tax-title h3 {
+    font-size: 2rem;
+    margin: 0;
+}
+
 .tax-card {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 0;
-    margin: 8rem 3rem;
+    margin-left: 2rem;
+}
+
+.tax-con {
+    border-left: 5px solid #d37764;
+}
+
+.tax-pro {
+    border-left: 5px solid #588b8b;
 }
 
 .tax-con h2 {
@@ -181,19 +213,18 @@ tr > th:last-child {
 }
 
 .tax-sub-card {
-    width: 100%;
-    height: 100%;
+    width: 35vw;
     border-radius: inherit;
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 1rem 3rem;
-    margin: 0;
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
 }
 
 .tax-sub-card > span {
     margin-top: 2rem;
-    margin-left: 2rem;
+    margin-left: 3rem;
     font-weight: 400;
 }
 
@@ -201,7 +232,6 @@ tr > th:last-child {
     text-transform: uppercase;
     font-size: 2.5rem;
     font-weight: 600;
-    margin: 2rem 0;
 }
 
 .tax-sub-card span {
@@ -252,7 +282,7 @@ tr > th:last-child {
 .apex-axis-title {
     font-family: inherit;
     font-weight: normal;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 .apexcharts-svg {
@@ -371,4 +401,16 @@ svg text {
 .c-h1_2-bottom {
     grid-column: 1 / 13;
     grid-row: 7 / 13;
+}
+
+.c-f1_2-mid {
+    grid-column: 4 / 10;
+    grid-row: 3 / 11;
+}
+
+.slide-title {
+    grid-column: 3 / 12;
+    grid-row: 6;
+    font-size: 3rem;
+    align-self: center;
 }
