@@ -156,14 +156,17 @@ var options = {
             },
         },
         min: 30,
-        max: 75,
-        tickAmount: 9,
+        max: 80,
+        tickAmount: 10,
         labels: {
             formatter: function (val) {
                 return val + "%";
             },
         },
         axisBorder: {
+            show: true,
+        },
+        axisTicks: {
             show: true,
         },
     },
@@ -177,7 +180,7 @@ var options = {
             },
         },
         type: "numeric",
-        min: 1000,
+        min: 0,
         max: 1600000,
         tickAmount: 10,
         labels: {
