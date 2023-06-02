@@ -139,7 +139,7 @@ var options = {
         },
     ],
     markers: {
-        size: 15,
+        size: 14,
         colors: colors,
         shape: "circle",
         hover: {

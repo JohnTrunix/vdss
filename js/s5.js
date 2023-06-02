@@ -75,6 +75,9 @@ var options = {
         type: "heatmap",
         height: "100%",
         width: "100%",
+        toolbar: {
+            show: true,
+        },
     },
     series: [
         {
