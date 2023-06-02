@@ -306,6 +306,10 @@ svg text {
     fill: #fff;
 }
 
+.apexcharts-menu-item {
+    color: #000 !important;
+}
+
 /* Extra Fullpage Configs */
 
 #fp-nav ul li a span,
