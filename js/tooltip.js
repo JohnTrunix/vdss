@@ -60,7 +60,7 @@ export const s6Tooltip = (data) =>
         <div class="c-tooltip-series">
             <span class="c-tooltip-data-label">Wealth Tax: </span>
             <span class="c-tooltip-data-value"
-                >${data.wealth_tax.toFixed(2)}%</span
+                >${data.wealth_tax.toFixed(2)}‰</span
             >
         </div>
     </div>
