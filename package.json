@@ -25,7 +25,6 @@
     },
     "parcelIgnore": [
         "datareport.html",
-        "personas.html",
         "utils.js"
     ],
     "staticFiles": [
@@ -37,12 +36,6 @@
         },
         {
             "staticPath": "docs/_build/datareport.pdf"
-        },
-        {
-            "staticPath": "docs/_build/personas.html"
-        },
-        {
-            "staticPath": "docs/_build/personas.pdf"
         }
     ]
 }
