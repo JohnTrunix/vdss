@@ -65,7 +65,7 @@ var options = {
             },
         },
         title: {
-            text: "Proportion of Houseowners (%)",
+            text: "Ratio of Homeownership (%)",
             offsetX: 0,
             offsetY: 10,
             style: {

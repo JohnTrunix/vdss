@@ -59,7 +59,7 @@ var options = {
             },
         },
         title: {
-            text: "Average House Price (CHF/m²)",
+            text: "Average Square Meter Price (CHF/m²)",
             offsetX: 0,
             offsetY: 10,
             style: {
