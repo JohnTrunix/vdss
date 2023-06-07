@@ -28,3 +28,12 @@
         padding-right: 1rem;
     }
 }
+
+@supports not (initial-letter: 2) {
+    .recap div p::first-letter {
+        color: var(--secondary-color);
+        padding-right: 0.1rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+}
