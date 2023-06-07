@@ -34,16 +34,6 @@ var options = {
     },
     grid: {
         show: false,
-        xaxis: {
-            lines: {
-                show: true,
-            },
-        },
-        yaxis: {
-            lines: {
-                show: true,
-            },
-        },
     },
     series: [
         {
@@ -148,8 +138,8 @@ var options = {
     },
     yaxis: {
         title: {
-            text: "Single Family Homes [%]",
-            offsetX: -20,
+            text: "Single Family Homes (%)",
+            offsetX: -10,
             offsetY: 0,
             style: {
                 cssClass: "apex-axis-title",
@@ -174,7 +164,7 @@ var options = {
         title: {
             text: "Number of Inhabitants",
             offsetX: 0,
-            offsetY: 20,
+            offsetY: 10,
             style: {
                 cssClass: "apex-axis-title",
             },

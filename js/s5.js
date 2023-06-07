@@ -101,7 +101,7 @@ var options = {
             data: metal_construction,
         },
         {
-            name: "Masonry and Reinforced Concrete",
+            name: "Masonry and Reinforcement",
             data: masonry_reinforced,
         },
         {

@@ -27,10 +27,10 @@ var options = {
             lines: {
                 show: true,
             },
-            yaxis: {
-                lines: {
-                    show: true,
-                },
+        },
+        yaxis: {
+            lines: {
+                show: false,
             },
         },
     },
@@ -56,9 +56,20 @@ var options = {
         enabled: false,
     },
     xaxis: {
+        min: 0,
+        max: 100,
+        tickAmount: 10,
         labels: {
             formatter: function (val) {
                 return val + "%";
+            },
+        },
+        title: {
+            text: "Proportion of Houseowners (%)",
+            offsetX: 0,
+            offsetY: 10,
+            style: {
+                cssClass: "apex-axis-title",
             },
         },
     },

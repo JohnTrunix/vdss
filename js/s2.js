@@ -21,10 +21,10 @@ var options = {
             lines: {
                 show: true,
             },
-            yaxis: {
-                lines: {
-                    show: true,
-                },
+        },
+        yaxis: {
+            lines: {
+                show: false,
             },
         },
     },
@@ -50,15 +50,20 @@ var options = {
         enabled: false,
     },
     xaxis: {
-        labels: {
-            rotate: -90,
-        },
-    },
-    xaxis: {
-        reversed: false,
+        min: 0,
+        max: 7500,
+        tickAmount: 9,
         labels: {
             formatter: function (val) {
-                return Math.round(val / 1000) + "k CHF/m²";
+                return (val / 1000).toFixed(1) + "k CHF/m²";
+            },
+        },
+        title: {
+            text: "Average House Price (CHF/m²)",
+            offsetX: 0,
+            offsetY: 10,
+            style: {
+                cssClass: "apex-axis-title",
             },
         },
     },

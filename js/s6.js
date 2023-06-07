@@ -1,6 +1,5 @@
 import ApexCharts from "apexcharts";
 import { s6Data } from "../data/s6Data.js";
-import { s6Tooltip } from "./tooltip.js";
 
 // ------------------- Data Preparation -------------------
 var income_tax = s6Data.map((x) => x.income_tax);
@@ -59,11 +58,19 @@ var options = {
                 },
             },
             min: 0,
-            max: 45,
-            tickAmount: 9,
+            max: 50,
+            tickAmount: 10,
+            title: {
+                text: "Income & Profit Tax (%)",
+                offsetX: 0,
+                offsetY: -10,
+                style: {
+                    cssClass: "apex-axis-title",
+                },
+            },
         },
         {
-            seriesName: "Income Tax",
+            seriesName: "Profit Tax",
             show: false,
             labels: {
                 formatter: function (val) {
@@ -71,20 +78,30 @@ var options = {
                 },
             },
             min: 0,
-            max: 45,
-            tickAmount: 9,
+            max: 50,
+            tickAmount: 10,
         },
         {
             seriesName: "Wealth Tax",
-            show: false,
+            show: true,
             labels: {
                 formatter: function (val) {
                     return val.toFixed(0) + "‰";
                 },
             },
             min: 0,
-            max: 45,
-            tickAmount: 9,
+            max: 25,
+            tickAmount: 5,
+            opposite: true,
+            title: {
+                text: "Wealth Tax (‰)",
+                offsetX: 0,
+                offsetY: 10,
+                rotate: 90,
+                style: {
+                    cssClass: "apex-axis-title",
+                },
+            },
         },
     ],
     legend: {

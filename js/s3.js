@@ -41,10 +41,10 @@ var options = {
             lines: {
                 show: true,
             },
-            yaxis: {
-                lines: {
-                    show: true,
-                },
+        },
+        yaxis: {
+            lines: {
+                show: true,
             },
         },
     },
@@ -80,6 +80,14 @@ var options = {
         labels: {
             formatter: function (val) {
                 return Math.round(val) + "%";
+            },
+        },
+        title: {
+            text: "Price Change compared to 2020 (%)",
+            offsetX: -10,
+            offsetY: 0,
+            style: {
+                cssClass: "apex-axis-title",
             },
         },
     },
