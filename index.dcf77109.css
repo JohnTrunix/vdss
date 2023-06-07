@@ -1,0 +1,2 @@
+.recap-title{color:var(--heading-color);width:10rem;grid-area:6/1/7/4;margin-left:calc(50% - 5rem);font-size:7rem}.recap p{margin-bottom:2rem;font-size:1.2rem}.recap{flex-direction:column;grid-area:1/5/13/13;justify-content:center;display:flex;padding:0 4rem!important}@supports (initial-letter:2){.recap div p:first-letter{color:var(--secondary-color);initial-letter:2;padding-right:1rem}}@supports not (initial-letter:2){.recap div p:first-letter{color:var(--secondary-color);padding-right:.1rem;font-size:1.5rem;font-weight:600}}
+/*# sourceMappingURL=index.dcf77109.css.map */
