@@ -65,9 +65,8 @@ new fullpage("#fullpage", {
     sectionSelector: ".section",
     slideSelector: ".slide",
 
-    // Credits disables because of custom reference on last section
     credits: {
-        enabled: false,
+        enabled: true,
     },
 
     beforeLeave: function (origin, destination, direction) {

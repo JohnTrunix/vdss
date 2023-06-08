@@ -1,46 +1,42 @@
-.ref-title {
+.ref-container {
     grid-column: 1 / 13;
-    grid-row: 1 / 3;
+    grid-row: 1 / 13;
+    display: flex;
+    flex-direction: column;
+    padding: 0 3rem 0 5rem;
+    justify-content: space-between;
+}
+
+.ref-title {
     font-size: 4rem;
     color: var(--heading-color);
-    margin-left: 5rem;
 }
 
-.ref-box {
-    padding: 0 2rem;
-    margin: 0 3rem;
+.ref-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 60vh;
 }
 
-.ref-box h3 {
+.ref-col {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ref-col h3 {
     font-size: 2rem;
     color: var(--subheading-color);
+    margin-bottom: 0.9rem;
 }
 
-.ref-data {
-    grid-column: 1 / 7;
-    grid-row: 3 / 9;
-}
-
-.ref-doc {
-    grid-column: 1 / 7;
-    grid-row: 9 / 13;
-}
-
-.ref-code {
-    grid-column: 7 / 13;
-    grid-row: 3 / 9;
-    margin-left: 0;
-}
-
-.ref-other {
-    grid-column: 7 / 13;
-    grid-row: 9 / 13;
-    margin-left: 0;
-}
-
-.ref-item-container {
-    padding: 0;
-    margin: 0;
+.ref-col a {
+    color: var(--background-color);
+    text-decoration: none;
+    width: 90%;
 }
 
 .ref-item {
@@ -49,20 +45,10 @@
     margin-bottom: 1rem;
     padding: 0.8rem;
     background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.9);
     border-radius: 5px;
     font-size: 1.2rem;
     transition: transform 0.3s ease-in-out;
-}
-
-.ref-item-container a {
-    color: var(--background-color);
-    text-decoration: inherit;
-    width: 100%;
-    height: 100%;
-}
-
-.ref-item-container a .ref-item:hover {
-    transform: translateX(0.5rem);
 }
 
 .ref-icon {
@@ -71,22 +57,16 @@
     margin-right: 1rem;
 }
 
-.ref-disclaimer {
+a .ref-item:hover {
+    transform: translateX(0.5rem);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+p.ref-disclaimer {
+    width: 95%;
     font-size: 0.8rem;
     font-style: italic;
     color: rgba(255, 255, 255, 0.7);
-    margin-top: 1rem;
-}
-
-.ref-cookie {
-    font-size: 0.8rem;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: underline;
-    all: unset;
-}
-
-.ref-cookie:hover {
-    color: rgba(255, 255, 255, 1);
-    cursor: pointer;
+    margin: 2rem 0 1rem 0;
 }
