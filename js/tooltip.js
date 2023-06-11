@@ -21,7 +21,7 @@ export const s4Tooltip = (data) =>
         </div>
         <div class="c-tooltip-series">
             <span class="c-tooltip-data-label">Single Homes [%]: </span>
-            <span class="c-tooltip-data-value">${data.y}%</span>
+            <span class="c-tooltip-data-value">${data.y.toFixed(2)}%</span>
         </div>
     </div>
 </div>
