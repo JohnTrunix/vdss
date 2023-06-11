@@ -1,10 +1,12 @@
 import ApexCharts from "apexcharts";
-import { s2Data } from "../data/s2Data.js";
+import { s2Data } from "../data/03_exports/s2Data.js";
 import { pipe } from "./tooltip.js";
 
 // ------------------- Data Preparation -------------------
 
 // ------------------- Chart Preparation -------------------
+var colors = new Array(s2Data.length - 1).fill("#93B7BE");
+colors.unshift("#C8553D");
 
 var options = {
     chart: {
@@ -33,9 +35,9 @@ var options = {
             name: "Average Square Meter Price",
             data: s2Data.map((x) => {
                 return {
-                    x: x.Country,
-                    y: x.Average,
-                    fillColor: x.color,
+                    x: x.country,
+                    y: x.avg_price,
+                    fillColor: colors.shift(),
                 };
             }),
         },

@@ -1,5 +1,5 @@
 import ApexCharts from "apexcharts";
-import { s6Data } from "../data/s6Data.js";
+import { s6Data } from "../data/03_exports/s6Data.js";
 
 // ------------------- Data Preparation -------------------
 var income_tax = s6Data.map((x) => x.income_tax);

@@ -1,5 +1,5 @@
 import ApexCharts from "apexcharts";
-import { s5Data } from "../data/s5Data.js";
+import { s5Data } from "../data/03_exports/s5Data.js";
 
 // ------------------- Data Preparation -------------------
 function mapData(data) {

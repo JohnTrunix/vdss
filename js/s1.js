@@ -1,17 +1,19 @@
 import ApexCharts from "apexcharts";
-import { s1Data } from "../data/s1Data.js";
+import { s1Data } from "../data/03_exports/s1Data";
 
 // ------------------- Data Preparation -------------------
+var colors = new Array(s1Data.length - 1).fill("#93B7BE");
+colors.push("#C8553D");
+
 var data2018 = s1Data.map((x) => {
     return {
-        x: x.Country,
+        x: x.country,
         y: x["2018"],
-        color: x.color,
+        color: colors.shift(),
     };
 });
 
 // ------------------- Chart Preparation -------------------
-
 var options = {
     chart: {
         type: "bar",

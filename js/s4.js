@@ -1,5 +1,5 @@
 import ApexCharts from "apexcharts";
-import { s4Data } from "../data/s4Data.js";
+import { s4Data } from "../data/03_exports/s4Data.js";
 import { pipe, s4Tooltip } from "./tooltip.js";
 
 // ------------------- Data Preparation for each region -------------------
@@ -41,7 +41,7 @@ var options = {
             data: easter_swiss.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -54,7 +54,7 @@ var options = {
             data: espace_midland.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -67,7 +67,7 @@ var options = {
             data: northwest_swiss.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -80,7 +80,7 @@ var options = {
             data: lake_geneva.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -93,7 +93,7 @@ var options = {
             data: central_swiss.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -106,7 +106,7 @@ var options = {
             data: ticino.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,
@@ -119,7 +119,7 @@ var options = {
             data: zurich.map((x) => {
                 return {
                     x: x.inhabitants,
-                    y: x.prc_single_home,
+                    y: x.prc_single_family_home,
                     canton: x.canton,
                     region: x.region,
                     total_buildings: x.buildings_total,

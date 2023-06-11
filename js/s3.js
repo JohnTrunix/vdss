@@ -1,25 +1,25 @@
 import ApexCharts from "apexcharts";
-import { s3Data } from "../data/s3Data.js";
+import { s3Data } from "../data/03_exports/s3Data.js";
 
 // ------------------- Data Preparation -------------------
 var condos = s3Data.map((x) => {
     return {
-        x: x.Date,
-        y: x.c_diff_abs_per,
+        x: x.date,
+        y: x.prc_condos,
     };
 });
 
 var houses = s3Data.map((x) => {
     return {
-        x: x.Date,
-        y: x.h_diff_abs_per,
+        x: x.date,
+        y: x.prc_houses,
     };
 });
 
 var appartments = s3Data.map((x) => {
     return {
-        x: x.Date,
-        y: x.a_diff_abs_per,
+        x: x.date,
+        y: x.prc_rental,
     };
 });
 
