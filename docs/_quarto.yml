@@ -2,13 +2,19 @@ project:
     output-dir: _build
 
 toc: true
+toc-depth: 2
+toc-expand: true
 number-sections: true
+
+execute:
+    warning: false
+    error: false
 
 format:
     html:
         theme: united
 
-        code-fold: false
+        code-fold: true
         code-copy: true
         highlight-style: github
 
@@ -18,5 +24,10 @@ format:
         self-contained-math: true
 
     pdf:
-        documentclass: article
-        papersize: A4
+        documentclass: scrreprt
+        papersize: a4paper
+
+        margin-left: 2cm
+        margin-right: 2cm
+        margin-top: 2cm
+        margin-bottom: 2cm

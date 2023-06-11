@@ -1,39 +1,1104 @@
 ---
 title: "Data Report"
-author: "DS-22t"
-date: "2023-05-31"
+author: ["Laura Conti", "Sabrina Popp", "Alex Leccadito", "John Truninger"]
+date: "2023-06-11"
 ---
 
-## Data Sources
+# Raw Data
 
-| Data Source | Description | Link |
-| ----------- | ----------- | ---- |
-| a | b | c |
-| d | e | f |
-| g | h | i |
+The raw data sets can all be found in the directory `data/01_raw`. Each data set is then located in its own folder, which includes a spreadsheet (`.xlsx`, `.xls`, `.csv` or `.ods`), as well as the URL to the source for downloading the data.
 
-
-## Data Dictionary
-
-| Variable | Description | Type |
-| -------- | ----------- | ---- |
-| a | b | c |
-| d | e | f |
-| g | h | i |
-
+| Number | Dataset Name | Source | Folder in data/01_raw |
+| :---: | :--- | :--- | :--- |
+| R01 | Swiss Real Estate Offer Index | [`https://www.iazicifi.ch/`](https://www.iazicifi.ch/) | 01_Swiss Real Estate Offer Index |
+| R02 | Distribution of population by tenure status | [`https://ec.europa.eu/`](https://ec.europa.eu/) | 02_Distribution of population by tenure status |
+| R03 | Average sales price of new and existing residential property | [`https://www.statista.com/`](https://www.statista.com/) | 03_Average price per square meter in european countries |
+| R04 | General overview "Buildings" by cantons 2021 | [`https://www.bfs.admin.ch/`](https://www.bfs.admin.ch/) | 04_Allgemeine Übersicht Gebäude nach Kantonen 2021 |
+| R05 | Structure of the permanent resident population by canton, 1999-2021 | [`https://www.bfs.admin.ch/`](https://www.bfs.admin.ch/) | 05_Struktur der ständigen Wohnbevölkerung nach Kanton, 1999-2021 |
+| R06 | Swiss Construction Price Index - Average unit prices in Switzerland and the major regions | [`https://www.bfs.admin.ch/`](https://www.bfs.admin.ch/) | 06_Schweizerischer Baupreisindex - Durchschnittliche Einheitspreise in der Schweiz und in den Grossregionen |
+| R07 | Taxes & Public Finances | [`https://www.statista.com/`](https://www.statista.com/) | 07_Steuern_&_Staatsfinanzen |
 
 ```{python}
-#| eval: false
+from pathlib import Path
+import numpy as np
 import pandas as pd
+import openpyxl
 
-df = pd.read_csv('data.csv')
-df.head()
+import warnings
+warnings.filterwarnings('ignore', category=UserWarning)
+warnings.filterwarnings('ignore', category=FutureWarning)
+```
+
+```{python}
+
+data_path = Path('../data')
+raw_data = Path(data_path, '01_raw')
+prc_data = Path(data_path, '02_processed')
+exp_data = Path(data_path, '03_exports')
+```
+
+## Dataset R01: Swiss Real Estate Offer Index
+
+### Details Dataset
+
+The source of this dataset consists of an excel file with multiple spreadsheets. Collectivly, it shows the monthly average price of real estate in selected regions of switzerland.
+
+- Sheet: `Miet_Indizes`: This sheet contains the monthly averaged offer prices for rental appartments in selected regions of switherland.
+  - Description of rows: 
+    - respective month index for the body of the dataset
+  - Description of columns: 
+    - `t`: date of the index in format `dd.mm.yyyy`
+    - `Eigenthumswohnungen`: prices for condominiums in switzerland
+    - `Einfamilienhäuser`: prices for houses in switzerland
+
+- Sheet: `Preis_Indizes`: This sheet contains the monthly averaged price offers for condominiumns and houses in switzerland.
+  - Description of rows:
+    - respective month index for the body of the dataset
+  - Description of columns:
+    - `t`: date of the index in format `dd.mm.yyyy`   
+    - `Eigenthumswohnungen`: prices for condominiums in switzerland
+    - `Einfamilienhäuser`: prices for houses in switzerland
+
+> This dataset was created by the company IAZI AG - CIFI SA and ImmoScout24. The Swiss Real Estate Offer Index is a real estate index family. They are the world's first hedonic indices that are calculated and updated in real time. Thanks to the continuous updating and their methodology, they allow the timely monitoring of the development of offer prices and offer rents on the largest real estate platform in Switzerland.
+
+In the following steps, the data will be extracted from 2 sheets and in the end combined to create the raw dataset R01.
+
+### Data Quality
+
+The data is already preprocessed which means, handling `NaN` values won't be necessairy. However since two sheet will be merged, a cut-off from a specific year is nescessairy since the two subdatasets do not have the same time range.
+
+```{python}
+rDataSet_10 = Path(
+    raw_data, 
+    '01_Swiss Real Estate Offer Index', 
+    'Swiss Real Estate Offer Index.xlsx'
+)
+```
+
+### Data Extraction & Cleansing
+
+As before mentioned a new dataset will be created through extracting the specific sheets from the main dataset and combining them into one dataset.
+
+**Data extraction and reshaping `Miet_Indizes`**
+
+```{python}
+dataframe_10 = pd.read_excel(
+    rDataSet_10, 
+    sheet_name='Miet_Indizes',
+    skiprows=6,
+    skipfooter=3,
+)
+
+# drop unused columns
+dataframe_10 = dataframe_10.drop(
+    dataframe_10.columns[2:], 
+    axis=1
+)
+
+# rename columns
+dataframe_10 = dataframe_10.rename(
+    columns={
+        't': 'date',
+        'CH': 'rental_index'
+    }
+)
+
+# format column date to datetime
+dataframe_10['date'] = pd.to_datetime(
+                            dataframe_10['date'],
+                            dayfirst=True
+                       ).dt.date
+
+
+# reset index & sort by date
+dataframe_10.reset_index(drop=True, inplace=True)
+dataframe_10.sort_values(by='date', inplace=True)
+
+dataframe_10.head()
 ```
 
 
-### Mermaid Diagram
-```{mermaid}
-graph LR
-    A[Data] --> B[Data Report] --> C[Data Dictionary] --> D[Data Model]
+**Data extraction and reshaping `Preis_Indizes`**
+
+```{python}
+dataframe_11 = pd.read_excel(
+    rDataSet_10, 
+    sheet_name='Preis_Indizes',
+    skiprows=6,
+    skipfooter=3,
+)
+
+# rename columns
+dataframe_11 = dataframe_11.rename(
+    columns={
+        't': 'date',
+        'Eigentumswohnungen': 'condos',
+        'Einfamilienhäuser': 'houses'
+    }
+)
+
+# format column date to datetime
+dataframe_11['date'] = pd.to_datetime(
+                            dataframe_11['date'],
+                            dayfirst=True
+                       ).dt.date
+
+# reset index & sort by date
+dataframe_11.reset_index(drop=True, inplace=True)
+dataframe_11.sort_values(by='date', inplace=True)
+
+dataframe_11.head()
 ```
 
+### Data merging
+
+```{python}
+dataframe_10 = pd.merge(
+    dataframe_10,
+    dataframe_11,
+    on='date'
+)
+
+dataframe_10.head()
+```
+
+
+## Dataset R02: Distribution of population by tenure status
+
+### Details Dataset
+
+Collectivly, this presents the distribution of population by tenure status (tenure, owner) in selected european countries.
+
+- Sheet: `Summary`: This sheet gives additional informationa bout the source and the contents of the dataset
+  
+- Sheet: `Structure`: The summary sheet gives additionaly information about the structure of the data.
+
+- Sheet: `Sheet 1`: This sheet shows the distribution of population by tenure status, type of household and income group with the tenure type `owner`
+  - Description of rows:
+    - respective country index for the body of the dataset
+  - Description of columns:
+    - `2003 - 2022`: year of the data
+
+- Sheet: `Sheet 2`: This sheet shows the distribution of population by tenure status, type of household and income group with the tenure type `tenure`
+
+> Note: The relevant sheet for this task is `Sheet 1`
+
+### Data Quality
+
+Although there are some NaN entries in the dataset, they wont be replaced or looked at differently. Instead, the visualisation will only cover reference a specific column where there are the least NaN values. Aditionally there are some countries whose names are abnormal. These will be renamed to match the rest of the data.
+
+```{python}
+rDataSet_20 = Path(
+    raw_data, 
+    '02_Distribution of population by tenure status',
+    'ilc_lvho02__custom_6240818_spreadsheet.xlsx'
+)
+```
+
+### Data Extraction & Cleansing
+
+```{python}
+dataframe_20 = pd.read_excel(
+    rDataSet_20, 
+    sheet_name='Sheet 1',
+    skiprows=11,
+    skipfooter=3,
+)
+
+# keep only relevant columns
+dataframe_20 = dataframe_20.iloc[:, [0, 16]]
+
+# rename columns
+dataframe_20 = dataframe_20.rename(
+    columns={
+        'GEO (Labels)': 'country',
+        'Unnamed: 16': '2018'
+    }
+)
+
+# rename row with Germany
+dataframe_20 = dataframe_20.replace(
+    'Germany (until 1990 former territory of the FRG)',
+    'Germany'
+)
+
+# reset index
+dataframe_20.reset_index(drop=True, inplace=True)
+
+
+dataframe_20.head()
+```
+
+## Dataset R03: Average price per square meter in european countries
+
+### Details Dataset
+
+This dataset contains the monthly averaged price per square meter for owned real estate in selected european countries.
+
+- Sheet: `Overview`: This sheet containes the additionaly information about the data and its source
+
+- Sheet: `Data`: This sheet contains the monthly averaged price offers for condominiumns and houses in switzerland
+  - Description of Rows:
+    - `Country`: respective country
+  - Description of Columns:
+    - `New Housing`: average sales price for new built houses
+    - `Existing Housing`: average sales price for existing houses
+
+### Data Quality
+
+The data for this dataset was originally published by the company Deloitte in August 2022 in a pdf File. Afterwards the relevant data has been copied into a workable Excel file and uploaded to Statista. In the following steps an extraction of the sheet 'data' will be made. Since only one price is needed in the end, the average of the price for existing houses and new houses gets calculated. This also removes the problematic of the NaN Values because in that case only the existing value is kept. 
+
+```{python}
+rDataSet_30 = Path(
+    raw_data, 
+    '03_Average price per square meter in european countries',
+    'statistic_id722905_average-residential-real-estate-square-meter-prices-in-europe-2021-by-country.xlsx'
+)
+```
+
+### Data Extraction & Cleansing
+
+```{python}
+dataframe_30 = pd.read_excel(
+    rDataSet_30, 
+    sheet_name='Data',
+    skiprows=4,
+)
+
+# drop unused columns
+dataframe_30.drop(
+    ['Unnamed: 0'],
+    axis=1,
+    inplace=True
+)
+
+# rename columns
+dataframe_30 = dataframe_30.rename(
+    columns={
+        'Unnamed: 1': 'country',
+        'New housing': 'new_housing',
+        'Existing housing': 'existing_housing'
+    }
+)
+
+# calculate average price
+dataframe_30['avg_price'] = np.nanmean(
+                                dataframe_30[['new_housing', 'existing_housing']],
+                                axis=1
+                            )
+
+# drop unused columns
+dataframe_30.drop(
+    ['new_housing', 'existing_housing'],
+    axis=1,
+    inplace=True
+)
+
+dataframe_30.head()
+```
+
+## Dataset R04: General overview "Buildings" by cantons 2021
+
+### Details Dataset
+
+This dataset contains detailed information on the types of habitable buildings in switzerland, categorized by swiss cantons. Each sheet in this dataset represents a canton of switzerland, as well as a sheet for the entire country.
+
+- Description of rows:
+  - `Total`: contains different types of housings and buildings
+  - `Bauperiode`: contains ranges of years when the houses were built
+  - `Grossanzahl`: number of storeys of the buildings
+  - `Energiequelle der Heizung`: energy source for heating
+  - `Energiequelle für die Warmwasseraufbereitung`: energy source for warm water treatment
+  - `Eigentümertyp`: type of ownership
+
+- Description of columns:
+  - `Total`: cumulative number of habitable buildings
+  - `Bauperiode`: building periods
+  - `Mit ... Wohnungen`: number of appartments within a building
+
+- Body of the dataset:
+  - The body of the dataset is filled with the number of buildings that satisfy both, the row and column conditions.
+
+### Data Quality
+
+The files provided by the BFS (Bundesamt für Statistik, Federal Statistics Office) are already cleaned datasets. Therefore, handling of NaN values will mostly not be necessary. The current dataset exhibits some cells without values, but this is due to yearly numbers being present in the rows and the columns. This leads to values along the diagonal and NaN values in the triangles above and below the diagonal. The main objective of processing this dataset is to extract the necessary columns and rows for later analysis and visualizations.
+
+```{python}
+rDataSet_40 = Path(
+    raw_data, 
+    '04_Allgemeine Übersicht Gebäude nach Kantonen 2021',
+    'je-d-09.02.00-2021.xlsx'
+)
+```	
+
+### Data Extraction & Cleansing
+
+```{python}
+wb_40 = openpyxl.load_workbook(rDataSet_40, read_only=True)
+sheets_40 = wb_40.sheetnames
+
+
+def buildings_extraction(path: str, sheet: str, df_out: pd.DataFrame) -> None:
+    """
+    Extracts the total number of buildings and single family homes for
+    a given sheet (canton)
+
+    :param path: path to the excel file
+    :param sheet: sheet name
+    :param df_out: dataframe to store the extracted data
+    :return: None
+    """
+
+    df_temp = pd.read_excel(io=path, sheet_name=sheet, skiprows=4)
+    canton = sheet[-2:]
+    total = int(df_temp.iloc[0, 1])
+    single_house = int(df_temp.iloc[2, 1])
+
+    df_out.loc[canton] = [total, single_house]
+
+dataframe_40 = pd.DataFrame(
+    columns=['buildings_total', 'single_family_home']
+)
+
+for sheet in sheets_40:
+    buildings_extraction(
+        path=rDataSet_40,
+        sheet=sheet,
+        df_out=dataframe_40
+    )
+
+dataframe_40 = dataframe_40.iloc[1:].copy()
+dataframe_40.index.name = 'canton'
+
+dataframe_40 = dataframe_40.reset_index()
+dataframe_40 = dataframe_40.sort_values(by='canton')
+
+dataframe_40.head()
+```
+
+## Dataset R05: Structure of the permanent resident population by canton, 1999-2021
+
+### Details Dataset
+
+This dataset contains information about the population size in each canton of switzerland.
+
+- Description of rows:
+  - The rows represent the different cantons of Switzerland by regions
+
+- Description of columns:
+  - The columns categorize the population size by age, sex, nationality (Swiss or non-Swiss), civil status and the typology of the residential area
+  - `Total`: aggregates the data from all other columns
+
+- Body of the dataset:
+  - The body of the dataset contains the population count that satisfies both, the row and column conditions.
+
+### Data Quality
+
+As previously mentioned, the datasets from the BFS are known for their high data quality, requiring primarily the extraction of relevant information.
+
+```{python}
+rDataSet_50 = Path(
+    raw_data,
+    '05_Struktur der ständigen Wohnbevölkerung nach Kanton, 1999-2021',
+    'je-d-01.02.03.04.xlsx'
+)
+```
+
+
+### Data Extraction & Cleansing
+
+```{python}
+dataframe_50 = pd.read_excel(
+    io=rDataSet_50,
+    sheet_name='2021',
+    skiprows=4,
+)
+
+# selecting and renaming relevant columns
+dataframe_50 = dataframe_50[['Unnamed: 0', 'Unnamed: 1']].copy()
+dataframe_50.rename(
+    inplace=True,
+    columns={
+        'Unnamed: 0': 'canton',
+        'Unnamed: 1': 'inhabitants'
+    },
+)
+
+# select canton rows (present in dataframe_40)
+dataframe_50 = dataframe_50[dataframe_50['canton'].isin(dataframe_40['canton'])]
+
+dataframe_50.head()
+```
+
+## Dataset R06: Swiss Construction Price Index - Average unit prices in Switzerland and the major regions
+
+### Details Dataset
+
+This dataset contains detailed information about pricing in the building industry across different regions of Switzerland. The columns represent the different regions, while the rows contain various segments of the building process, such as attic, framework, flooring, and more.
+
+- Description of rows:
+  -	The rows contain different categories and specifications of construction activities.
+
+- Description of columns:
+  -	The columns represent the unit and quantity of construction activities for the different regions of Switzerland.
+
+- Body of the Dataset:
+  - The body of the dataset is filled with the number of inhabitants that satisfy both the row and column conditions.
+
+
+### Data Quality
+
+As mentioned previously, the datasets from BFS are very clean. Therefore, this part mainly involves extracting the relevant data. Since this dataset contains macros, a copy was created with the suffix '_raw' for convenience. Some rows consist of NaN (Not a Number) values, which is a result of the dataset structure. Additionally, some values are missing for the region of Ticino. This information is provided at the end of the Excel sheet as a comment: "Drei Punkte (…) bedeuten, dass der Wert nicht vorhanden, nicht genügend repräsentativ oder unter Datenschutz ist." (EN: Three dots (...) mean that the value is not present, not sufficiently representative, or under data protection.)
+
+```{python}
+rDataSet_60 = Path(
+    raw_data, 
+    '06_Schweizerischer Baupreisindex - Durchschnittliche Einheitspreise in der Schweiz und in den Grossregionen',
+    'cc-t-05.05.02.xlsx'
+)
+```
+
+### Data Extraction & Cleansing
+
+```{python}
+dataframe_60 = pd.read_excel(
+    io=rDataSet_60,
+    sheet_name='BAP_PCO',
+    skiprows=9,
+)
+
+# drop unused columns
+dataframe_60 = dataframe_60.drop(
+    columns=[
+        'Unnamed: 0',
+        'Unnamed: 1',
+        'Unnamed: 2',
+        'Einheit',
+        'Menge',
+        'Unnamed: 4',
+        'Unnamed: 15',
+        'Unnamed: 16'
+    ]
+)
+
+# rename columns
+dataframe_60 = dataframe_60.rename(
+    columns={
+        'NPK Position': 'Category',
+        'Schweiz': 'Switzerland',
+        'Genferseeregion (VD,VS,GE)': 'Lake Geneva Region',
+        'Espace Mittelland (BE, FR, SO, NE, JU)': 'Espace Midland',
+        'Nordwestschweiz (BS, BL, AG)': 'Northwestern Switzerland',
+        'Zürich (ZH)': 'Zurich',
+        'Ostschweiz (GL, SH, AR, AI, SG, GR, TG)': 'Eastern Switzerland',
+        'Zentralschweiz (LU, UR, SZ, OW, NW, ZG)': 'Central Switzerland',
+        'Tessin (TI)': 'Ticino'
+    }
+)
+
+def assignCategory(data: pd.DataFrame) -> pd.DataFrame:
+    categories = []
+    for index, row in data.iterrows():
+        if type(row['Category']) != float:
+            category = ' '.join(row['Category'].split(' ')[1:])
+        categories.append(category)
+
+    current_category = 'none'
+    for i in range(len(categories)):
+        if categories[i] != '':
+            current_category = categories[i]
+        categories[i] = current_category
+
+    data['Category'] = categories
+    return data
+
+dataframe_61 = assignCategory(dataframe_60)
+dataframe_61.head()
+```
+
+### Handling `NaN` values
+
+```{python}
+dataframe_61 = dataframe_61.replace('...', np.NaN)
+dataframe_61 = dataframe_61.dropna()
+
+print(dataframe_61.isna().sum())
+print(dataframe_61.dtypes)
+```
+
+### Normalization
+
+```{python}
+dataframe_62 = dataframe_61.groupby('Category').sum()
+
+def normalize_rows(data: pd.DataFrame) -> pd.DataFrame:
+    regions = list(data.columns)
+    categories = data.index
+    data2 = pd.DataFrame(columns = regions)
+    
+    for index, row in data.iterrows():
+        row_list_floats = [float(x) for x in row]
+        ch = float(row['Switzerland'])
+        normalized_row = [x * 100 / ch - 100 for x in row_list_floats]
+        data2.loc[len(data2.index)] = normalized_row
+    data2['Category'] = categories
+    data2 = data2.set_index('Category')
+    return data2
+
+dataframe_63 = normalize_rows(dataframe_62)
+dataframe_63 = dataframe_63.drop(columns=['Switzerland'])
+
+dataframe_63.head()
+```
+
+**Sorting columns by the most positive values (above swiss average)**
+
+```{python}
+dataframe_63_T = dataframe_63.T
+dataframe_63_T['POS_COUNT'] = dataframe_63_T.select_dtypes(include='float64').gt(0).sum(axis=1)
+
+dataframe_64 = dataframe_63_T.sort_values(by='POS_COUNT', ascending=False)
+dataframe_64 = dataframe_64.drop(columns=['POS_COUNT'])
+
+dataframe_64.head()
+```
+
+### English translation mapping
+
+```{python}
+translation_dict = {
+    'Allgemeine Schreinerarbeiten': 'General carpentry work',
+    'Aufzüge': 'Elevators',
+    'Baureinigung': 'Construction cleaning',
+    'Bodenbeläge': 'Floor coverings',
+    'Dichtungsbeläge': 'Sealing coatings',
+    'Erdarbeiten': 'Earthworks',
+    'Estriche ': 'Attic',
+    'Fenster': 'Windows',
+    'Gerüste': 'Scaffolding',
+    'Gipserarbeiten': 'Plastering work',
+    'Gärtnerarbeiten': 'Gardening work',
+    'Kücheneinrichtungen': 'Kitchen fittings',
+    'Malerarbeiten': 'Painting work',
+    'Maurer- und Stahlbetonarbeiten': 'Masonry and reinforced concrete work',
+    'Metallbauarbeiten': 'Metal construction work',
+    'Plattenarbeiten': 'Tiling work',
+    'Spenglerarbeiten': 'Sheet metal work',
+    'Tiefbauarbeiten': 'Civil engineering works',
+    'Zimmerarbeiten': 'Carpentry work'
+}
+
+dataframe_64 = dataframe_64.rename(columns=translation_dict)
+
+dataframe_64['region'] = dataframe_64.index
+dataframe_64.reset_index(drop=True, inplace=True)
+dataframe_64.head()
+```
+
+
+## Dataset R7: Taxes & Public Finances
+
+### Details Dataset
+
+The source of these comprehensive data is Statista, renowned for its quality and reliability. Researchers, analysts, and interested individuals can rely on this data to conduct informed studies and analyses.
+
+The files provided by Statista are preprocessed datasets, typically requiring minimal treatment of missing values or NaNs. The current datasets are cleaned.
+
+The primary objective of processing this dataset is to extract the necessary columns and rows for subsequent analysis and visualization.
+
+- File `Schweiz - Einkommenssteuersätze nach Kantonen 2022_Statista.csv`:
+  - Description of columns:
+    - `KANTON`: represents the canton names of Switzerland
+    - `PROZENT`: represents the income tax rates in percentage
+
+- File `Schweiz - Gewinnsteuersätze nach Kantonen 2022 _ Statista.csv`
+  - Description of columns:
+    - `KANTON`: represents the canton names of Switzerland
+    - `PROZENT`: represents the profit tax rates in percentage
+
+- File `Schweiz - Vermögenssteuersätze nach Kantonen 2018 _ Statista.csv` 
+  - Description of columns:
+    - `KANTON`: represents the canton names of Switzerland
+    - `PROZENT`: represents the wealth tax rates in promille
+
+```{python}
+rDataSet_70 = Path(
+    raw_data,
+    '07_Steuern_&_Staatsfinanzen',
+    'Schweiz - Einkommenssteuersätze nach Kantonen 2022 _ Statista.csv'
+)
+rDataSet_71 = Path(
+    raw_data,
+    '07_Steuern_&_Staatsfinanzen',
+    'Schweiz - Gewinnsteuersätze nach Kantonen 2022 _ Statista.csv'
+)
+rDataSet_72 = Path(
+    raw_data,
+    '07_Steuern_&_Staatsfinanzen',
+    'Schweiz - Vermögenssteuersätze nach Kantonen 2018 _ Statista.csv'
+)
+```
+
+### Data Extraction & Cleansing
+
+```{python}
+dataframe_70 = pd.read_csv(
+    rDataSet_70,
+    sep=';',
+    encoding='latin1'
+)
+
+dataframe_71 = pd.read_csv(
+    rDataSet_71,
+    sep=';',
+    encoding='latin1'
+)
+
+dataframe_72 = pd.read_csv(
+    rDataSet_72,
+    sep=';',
+    encoding='latin1'
+)
+
+# join dataframes
+dataframe_73 = pd.merge(
+    dataframe_70,
+    dataframe_71,
+    on='KANTON'
+)
+
+dataframe_73 = pd.merge(
+    dataframe_73,
+    dataframe_72,
+    on='KANTON'
+)
+
+# rename columns
+dataframe_73 = dataframe_73.rename(
+    columns={
+        'KANTON': 'canton',
+        'PROZENT_x': 'income_tax',
+        'PROZENT_y': 'profit_tax',
+        'Promille': 'wealth_tax'
+    }
+)
+
+dataframe_73.head()
+```	
+
+# Processed Data
+
+The processed data sets can all be found in the directory `data/02_processed`.
+
+```{python}
+# save R01 to csv
+dataframe_10.to_csv(
+    Path(prc_data, 'P01_price_indices.csv'),
+    index=False
+)
+
+# save R02 to csv
+dataframe_20.to_csv(
+    Path(prc_data, 'P02_ratio_homeowners_eu.csv'),
+    index=False
+)
+
+# save R03 to csv
+dataframe_30.to_csv(
+    Path(prc_data, 'P03_avg_price_smeter.csv'),
+    index=False
+)
+
+# save R04 to csv
+dataframe_40.to_csv(
+    Path(prc_data, 'P04_buildings_by_canton.csv'),
+    index=False
+)
+
+# save R05 to csv
+dataframe_50.to_csv(
+    Path(prc_data, 'P05_population_by_canton.csv'),
+    index=False
+)
+
+# save R06 to csv
+dataframe_64.to_csv(
+    Path(prc_data, 'P06_construction_prices.csv'),
+    index=False
+)
+
+# save R07 to csv
+dataframe_73.to_csv(
+    Path(prc_data, 'P07_taxes.csv'),
+    index=False
+)
+```
+
+| Number | Dataset Name | Source |
+| :---: | :--- | :--- |
+| P01 | P01_price_indices.csv | R01 |
+| P02 | P02_ratio_homeowners_eu.csv | R02 |
+| P03 | P03_avg_price_smeter.csv | R03 |
+| P04 | P04_buildings_by_canton.csv | R04 |
+| P05 | P05_population_by_canton.csv | R05 |
+| P06 | P06_construction_prices.csv | R06 |
+| P07 | P07_taxes.csv | R07 |
+
+# Exploratory Data Analysis
+
+## EDA P01: Price Indices
+
+```{python}
+dataframe_10 = pd.read_csv(
+    Path(prc_data, 'P01_price_indices.csv')
+)
+
+display(dataframe_10.describe())
+dataframe_10.info()
+```
+
+## EDA P02: Ratio Homeowners EU
+
+```{python}
+dataframe_20 = pd.read_csv(
+    Path(prc_data, 'P02_ratio_homeowners_eu.csv')
+)
+
+display(dataframe_20.describe())
+dataframe_20.info()
+```
+
+## EDA P03: Average Price per Square Meter
+
+```{python}
+dataframe_30 = pd.read_csv(
+    Path(prc_data, 'P03_avg_price_smeter.csv')
+)
+
+display(dataframe_30.describe())
+dataframe_30.info()
+```
+
+## EDA P04: Buildings by Canton
+
+```{python}
+dataframe_40 = pd.read_csv(
+    Path(prc_data, 'P04_buildings_by_canton.csv')
+)
+
+display(dataframe_40.describe())
+dataframe_40.info()
+```
+
+## EDA P05: Population by Canton
+
+```{python}
+dataframe_50 = pd.read_csv(
+    Path(prc_data, 'P05_population_by_canton.csv')
+)
+
+display(dataframe_50.describe())
+dataframe_50.info()
+```
+
+## EDA P06: Construction Prices
+
+```{python}
+dataframe_60 = pd.read_csv(
+    Path(prc_data, 'P06_construction_prices.csv')
+)
+
+display(dataframe_60.describe())
+dataframe_60.info()
+```
+
+## EDA P07: Taxes
+
+```{python}
+dataframe_70 = pd.read_csv(
+    Path(prc_data, 'P07_taxes.csv')
+)
+
+display(dataframe_70.describe())
+dataframe_70.info()
+```
+
+# Preparation for Visualization
+
+To use the data correctly in our visualizations, we exported the specific needed data to `.js` constants variables. These files can be found in the directory `data/03_exports`.
+
+| Chart Name | Used Dataframes | Exported File |
+| :---: | :--- | :--- |
+| S1 | P02 | s1Data.js |
+| S2 | P03 | s2Data.js |
+| S3 | P01 | s3Data.js |
+| S4 | P04, P05 | s4Data.js |
+| S5 | P06 | s5Data.js |
+| S6 | P07 | s6Data.js |
+
+**Export Function**
+
+```{python}
+def generate_data_js(df: pd.DataFrame, js_file_name: str, variable_name: str, orient: str) -> None:
+    """
+    Generates a JS file with a variable name and the data from the dataframe
+    -------------------------------------------------------------------------
+    :param df: dataframe to export
+    :param js_file_name: name of the JS file
+    :param variable_name: name of the variable
+    :param orient: orientation of the dataframe
+    :return: None
+    """
+    json_data = df.to_json(orient=orient, force_ascii=False)
+    with open(Path(exp_data, js_file_name), 'w', encoding='utf-8') as f:
+        f.write(f"export const {variable_name} = {json_data};")
+```	
+
+
+## S1 Chart
+
+```{python}
+s1_country_filter = [
+    'Switzerland',
+    'Norway',
+    'United Kingdom',
+    'Austria',
+    'France',
+    'Netherlands',
+    'Denmark',
+    'Czechia',
+    'Slovenia',
+    'Belgium',
+    'Spain',
+    'Italy',
+    'Croatia',
+    'Poland',
+    'Hungary',
+    'Portugal',
+    'Serbia',
+    'Latvia',
+]
+
+s1_data = pd.read_csv(
+    Path(prc_data, 'P02_ratio_homeowners_eu.csv')
+)
+
+# filter out countries
+s1_data = s1_data[s1_data['country'].isin(s1_country_filter)]
+
+# sort data descending
+s1_data = s1_data.sort_values(by='2018', ascending=False)
+
+# export data
+generate_data_js(
+    df=s1_data,
+    js_file_name='s1Data.js',
+    variable_name='s1Data',
+    orient='records'
+)
+
+s1_data.head()
+```
+
+## S2 Chart
+
+```{python}
+s2_data = pd.read_csv(
+    Path(prc_data, 'P03_avg_price_smeter.csv')
+)
+
+# sort data descending
+s2_data = s2_data.sort_values(by='avg_price', ascending=False)
+
+# export data
+generate_data_js(
+    df=s2_data,
+    js_file_name='s2Data.js',
+    variable_name='s2Data',
+    orient='records'
+)
+
+s2_data.head()
+```
+
+## S3 Chart
+
+```{python}
+s3_data = pd.read_csv(
+    Path(prc_data, 'P01_price_indices.csv')
+)
+
+# sort data descending
+s3_data = s3_data.sort_values(by='date', ascending=True)
+
+# filter out data before 2020-01-01
+s3_data = s3_data[s3_data['date'] >= '2020-01-01']
+
+# calculate relative differences
+s3_data['prc_rental'] = (100/258.26)*s3_data['rental_index']
+s3_data['prc_condos'] = (100/7157.74)*s3_data['condos']
+s3_data['prc_houses'] = (100/6308.97)*s3_data['houses']
+
+# export data
+generate_data_js(
+    df=s3_data,
+    js_file_name='s3Data.js',
+    variable_name='s3Data',
+    orient='records'
+)
+
+s3_data.head()
+```
+
+
+## S4 Chart
+
+```{python}
+region_mapping_s4 = {
+    'VD': 'Lake Geneva Region',
+    'VS': 'Lake Geneva Region',
+    'GE': 'Lake Geneva Region',
+    'BE': 'Espace Midland',
+    'FR': 'Espace Midland',
+    'SO': 'Espace Midland',
+    'NE': 'Espace Midland',
+    'JU': 'Espace Midland',
+    'BS': 'Northwestern Switzerland',
+    'BL': 'Northwestern Switzerland',
+    'AG': 'Northwestern Switzerland',
+    'ZH': 'Zurich',
+    'GL': 'Eastern Switzerland',
+    'SH': 'Eastern Switzerland',
+    'AR': 'Eastern Switzerland',
+    'AI': 'Eastern Switzerland',
+    'SG': 'Eastern Switzerland',
+    'GR': 'Eastern Switzerland',
+    'TG': 'Eastern Switzerland',
+    'LU': 'Central Switzerland',
+    'UR': 'Central Switzerland',
+    'SZ': 'Central Switzerland',
+    'OW': 'Central Switzerland',
+    'NW': 'Central Switzerland',
+    'ZG': 'Central Switzerland',
+    'TI': 'Ticino'
+}
+
+s4_data_1 = pd.read_csv(
+    Path(prc_data, 'P04_buildings_by_canton.csv')
+)
+
+s4_data_2 = pd.read_csv(
+    Path(prc_data, 'P05_population_by_canton.csv')
+)
+
+# merge dataframes
+s4_data = pd.merge(
+    s4_data_1,
+    s4_data_2,
+    on='canton'
+)
+
+s4_data['prc_single_family_home'] = s4_data['single_family_home'] / s4_data['buildings_total'] * 100
+s4_data['region'] = s4_data['canton'].map(region_mapping_s4)
+
+# export data
+generate_data_js(
+    df=s4_data,
+    js_file_name='s4Data.js',
+    variable_name='s4Data',
+    orient='records'
+)
+
+s4_data.head()
+```
+
+## S5 Chart
+
+```{python}
+s5_data = pd.read_csv(
+    Path(prc_data, 'P06_construction_prices.csv')
+)
+
+# move last column to first position
+cols = list(s5_data.columns)
+cols = [cols[-1]] + cols[:-1]
+s5_data = s5_data[cols]
+
+# transform dataframe
+regions = s5_data['region'].to_list()
+s5_data = s5_data.T
+s5_data.columns = regions
+
+# reset & rename index
+s5_data.reset_index(inplace=True)
+s5_data.rename(columns={'index': 'work_category'}, inplace=True)
+
+# drop first row
+s5_data = s5_data.iloc[1:].copy()
+
+# export data
+generate_data_js(
+    df=s5_data,
+    js_file_name='s5Data.js',
+    variable_name='s5Data',
+    orient='records'
+)
+
+s5_data.head()
+```
+
+## S6 Chart
+
+```{python}
+
+region_mapping_s6 = {
+    'Genf': 'Lake Geneva Region',
+    'Waadt': 'Lake Geneva Region',
+    'Wallis': 'Lake Geneva Region',
+    'Bern': 'Espace Midland',
+    'Freiburg': 'Espace Midland',
+    'Solothurn': 'Espace Midland',
+    'Neuenburg': 'Espace Midland',
+    'Jura': 'Espace Midland',
+    'Basel-Stadt': 'Northwestern Switzerland',
+    'Basel-Landschaft': 'Northwestern Switzerland',
+    'Aargau': 'Northwestern Switzerland',
+    'Zürich': 'Zurich',
+    'Glarus': 'Eastern Switzerland',
+    'Schaffhausen': 'Eastern Switzerland',
+    'Appenzell Ausserrhoden': 'Eastern Switzerland',
+    'Appenzell Innerrhoden': 'Eastern Switzerland',
+    'St. Gallen': 'Eastern Switzerland',
+    'Graubünden': 'Eastern Switzerland',
+    'Thurgau': 'Eastern Switzerland',
+    'Luzern': 'Central Switzerland',
+    'Uri': 'Central Switzerland',
+    'Schwyz': 'Central Switzerland',
+    'Obwalden': 'Central Switzerland',
+    'Nidwalden': 'Central Switzerland',
+    'Zug': 'Central Switzerland',
+    'Tessin': 'Ticino'
+}
+
+s6_data = pd.read_csv(
+    Path(prc_data, 'P07_taxes.csv',
+    encoding='latin1')
+)
+
+# sort data descending
+s6_data = s6_data.sort_values(by='canton', ascending=False)
+s6_data['region'] = s6_data['canton'].map(region_mapping_s6)
+
+# group data by region
+s6_data = s6_data.groupby('region').mean().reset_index()
+
+# export data
+generate_data_js(
+    df=s6_data,
+    js_file_name='s6Data.js',
+    variable_name='s6Data',
+    orient='records'
+)
+
+s6_data.head()
+```
