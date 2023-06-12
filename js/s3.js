@@ -83,7 +83,7 @@ var options = {
             },
         },
         title: {
-            text: "Price Change compared to 2020 (%)",
+            text: "Price change compared to 2020 (%)",
             offsetX: -10,
             offsetY: 0,
             style: {

@@ -38,7 +38,7 @@ var options = {
     },
     series: [
         {
-            name: "Ratio of Homeownership",
+            name: "Ratio of homeownership",
             data: data2018.map((x) => {
                 return {
                     x: x.x,
@@ -67,7 +67,7 @@ var options = {
             },
         },
         title: {
-            text: "Ratio of Homeownership (%)",
+            text: "Ratio of homeownership (%)",
             offsetX: 0,
             offsetY: 10,
             style: {

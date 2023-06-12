@@ -32,7 +32,7 @@ var options = {
     },
     series: [
         {
-            name: "Average Square Meter Price",
+            name: "Average price",
             data: s2Data.map((x) => {
                 return {
                     x: x.country,
@@ -61,7 +61,7 @@ var options = {
             },
         },
         title: {
-            text: "Average Square Meter Price (CHF/m²)",
+            text: "Average price (CHF/m²)",
             offsetX: 0,
             offsetY: 10,
             style: {

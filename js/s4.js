@@ -138,7 +138,7 @@ var options = {
     },
     yaxis: {
         title: {
-            text: "Single Family Homes (%)",
+            text: "Single family homes (%)",
             offsetX: -10,
             offsetY: 0,
             style: {
@@ -162,7 +162,7 @@ var options = {
     },
     xaxis: {
         title: {
-            text: "Number of Inhabitants",
+            text: "Number of inhabitants",
             offsetX: 0,
             offsetY: 10,
             style: {

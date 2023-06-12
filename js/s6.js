@@ -61,7 +61,7 @@ var options = {
             max: 50,
             tickAmount: 10,
             title: {
-                text: "Income & Profit Tax (%)",
+                text: "Income & profit tax (%)",
                 offsetX: 0,
                 offsetY: -10,
                 style: {
@@ -70,7 +70,7 @@ var options = {
             },
         },
         {
-            seriesName: "Profit Tax",
+            seriesName: "Profit tax",
             show: false,
             labels: {
                 formatter: function (val) {
@@ -82,7 +82,7 @@ var options = {
             tickAmount: 10,
         },
         {
-            seriesName: "Wealth Tax",
+            seriesName: "Wealth tax",
             show: true,
             labels: {
                 formatter: function (val) {
@@ -94,7 +94,7 @@ var options = {
             tickAmount: 5,
             opposite: true,
             title: {
-                text: "Wealth Tax (‰)",
+                text: "Wealth tax (‰)",
                 offsetX: 0,
                 offsetY: 10,
                 rotate: 90,
