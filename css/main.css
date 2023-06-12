@@ -413,8 +413,9 @@ svg text {
 }
 
 .slide-title {
-    grid-column: 3 / 12;
+    grid-column: 2 / 11;
     grid-row: 6;
-    font-size: 3rem;
+    font-size: 4rem;
     align-self: center;
+    text-align: center;
 }
