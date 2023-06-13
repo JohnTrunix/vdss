@@ -1,12 +1,17 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s6Data } from "../data/03_exports/s6Data.js";
 
 // ------------------- Data Preparation -------------------
+
+// map data to different series [income_tax, profit_tax, wealth_tax]
 var income_tax = s6Data.map((x) => x.income_tax);
 var profit_tax = s6Data.map((x) => x.profit_tax);
 var wealth_tax = s6Data.map((x) => x.wealth_tax);
 
 // ------------------- Chart Preparation -------------------
+
+// set chart options
 var colors = ["#588B8B", "#C8553D", "#8b8bae"];
 var options = {
     chart: {

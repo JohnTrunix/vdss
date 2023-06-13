@@ -1,19 +1,13 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s1Data } from "../data/03_exports/s1Data";
 
-// ------------------- Data Preparation -------------------
+// ------------------- Chart Preparation -------------------
+// generate colors and set last color to red (-> Switzerland)
 var colors = new Array(s1Data.length - 1).fill("#93B7BE");
 colors.push("#C8553D");
 
-var data2018 = s1Data.map((x) => {
-    return {
-        x: x.country,
-        y: x["2018"],
-        color: colors.shift(),
-    };
-});
-
-// ------------------- Chart Preparation -------------------
+// set chart options
 var options = {
     chart: {
         type: "bar",
@@ -39,11 +33,11 @@ var options = {
     series: [
         {
             name: "Ratio of homeownership",
-            data: data2018.map((x) => {
+            data: s1Data.map((x) => {
                 return {
-                    x: x.x,
-                    y: x.y,
-                    fillColor: x.color,
+                    x: x.country,
+                    y: x["2018"],
+                    fillColor: colors.shift(),
                 };
             }),
         },

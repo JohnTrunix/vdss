@@ -1,7 +1,11 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s3Data } from "../data/03_exports/s3Data.js";
 
 // ------------------- Data Preparation -------------------
+// filter/map data to different series [condos, houses, appartments]
+
+// condos map
 var condos = s3Data.map((x) => {
     return {
         x: x.date,
@@ -9,6 +13,7 @@ var condos = s3Data.map((x) => {
     };
 });
 
+// houses map
 var houses = s3Data.map((x) => {
     return {
         x: x.date,
@@ -16,6 +21,7 @@ var houses = s3Data.map((x) => {
     };
 });
 
+// appartments map
 var appartments = s3Data.map((x) => {
     return {
         x: x.date,
@@ -24,6 +30,7 @@ var appartments = s3Data.map((x) => {
 });
 
 // ------------------- Chart Preparation -------------------
+// set chart options
 var colors = ["#C8553D", "#588B8B", "#8b8bae"];
 var options = {
     chart: {

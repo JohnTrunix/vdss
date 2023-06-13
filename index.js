@@ -6,11 +6,8 @@ import { s4Chart } from "./js/s4";
 import { s5Chart } from "./js/s5";
 import { s6Chart } from "./js/s6";
 
-// ------------------------------- VARIABLES -------------------------------
-var scrollCountTrigger = 6; //number of times the user has to scroll to go to the next section
-var scrollCount = 0; //number of times the user has to scroll to go to the next section
-
 // --------------------------- FULLPAGE.JS Init ----------------------------
+// see https://alvarotrigo.com/fullPage/docs/
 new fullpage("#fullpage", {
     licenseKey: "gplv3-license",
 
@@ -70,6 +67,7 @@ new fullpage("#fullpage", {
         enabled: true,
     },
 
+    // animate charts on scroll trigger
     beforeLeave: function (origin, destination, direction) {
         renderChart(origin, destination);
         return true;

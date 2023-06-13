@@ -13,17 +13,17 @@ vdss/
 ├── data/
 │   ├── 01_raw/             # raw data
 │   ├── 02_processed/       # processed data
-│   └── 03_output/          # output data
+│   └── 03_output/          # output data for charts
 ├── docs/
 │   ├── _quarto.yml         # quarto configuration
-│   ├── datareport.qmd      # quarto markdown file
+│   ├── datareport.qmd      # quarto md datareport
 │   ├── personas.pdf        # personas
 │   └── requirements.txt    # quarto build requirements
-├── js/                     # javascript files
+├── js/                     # js files for charts & utils
 ├── node_modules/           # node modules
 ├── .gitignore
-├── index.html              # index file
-├── index.js                # index js file
+├── index.html              # index file for website
+├── index.js                # index js file for website
 ├── LICENSE                 # license file
 ├── package-lock.json       # package lock file
 ├── package.json            # package file

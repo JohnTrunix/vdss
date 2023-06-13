@@ -1,13 +1,14 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s2Data } from "../data/03_exports/s2Data.js";
 import { pipe } from "./tooltip.js";
 
-// ------------------- Data Preparation -------------------
-
 // ------------------- Chart Preparation -------------------
+// generate colors and set first color to red (-> Switzerland)
 var colors = new Array(s2Data.length - 1).fill("#93B7BE");
 colors.unshift("#C8553D");
 
+// set chart options
 var options = {
     chart: {
         type: "bar",

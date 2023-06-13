@@ -1,8 +1,11 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s4Data } from "../data/03_exports/s4Data.js";
 import { pipe, s4Tooltip } from "./tooltip.js";
 
 // ------------------- Data Preparation for each region -------------------
+// filter data to different regions
+
 var easter_swiss = s4Data.filter((x) => x.region == "Eastern Switzerland");
 var espace_midland = s4Data.filter((x) => x.region == "Espace Midland");
 var northwest_swiss = s4Data.filter(
@@ -14,6 +17,7 @@ var ticino = s4Data.filter((x) => x.region == "Ticino");
 var zurich = s4Data.filter((x) => x.region == "Zurich");
 
 // ------------------- Chart Preparation -------------------
+// set colors
 var colors = [
     "#588B8B",
     "#F28F3B",
@@ -23,6 +27,8 @@ var colors = [
     "#ff9b71",
     "#8b8bae",
 ];
+
+// set chart options
 var options = {
     chart: {
         type: "scatter",

@@ -1,7 +1,10 @@
+// ------------------- Imports -------------------
 import ApexCharts from "apexcharts";
 import { s5Data } from "../data/03_exports/s5Data.js";
 
 // ------------------- Data Preparation -------------------
+
+//function which maps the data to the correct format
 function mapData(data) {
     var data2 = [];
     for (const [key, value] of Object.entries(data)) {
@@ -15,6 +18,7 @@ function mapData(data) {
     return data2;
 }
 
+// map data to different series
 var carpentry_work = mapData(
     s5Data.filter((x) => x.work_category == "General carpentry work")[0]
 );
@@ -70,6 +74,8 @@ var carpentry = mapData(
 );
 
 // ------------------- Chart Preparation -------------------
+
+// set chart options
 var options = {
     chart: {
         type: "heatmap",

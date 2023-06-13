@@ -1,4 +1,6 @@
 // ----------------------- Language Selection Feedback -----------------------
+
+// changes the language of the page currently only english is supported
 function changeLanguage() {
     var selectBox = document.getElementById("language-select");
     var selectedValue = selectBox.options[selectBox.selectedIndex].value;
